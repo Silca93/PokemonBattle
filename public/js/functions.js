@@ -9,6 +9,7 @@ export let icebeam = () => {
     console.log("Lapras used icebeam!");
     Venusaur.current_health = Venusaur.current_health - dmgIcebeam;
     console.log("Icebeam dealt " + dmgIcebeam + " hp to Venusaur. It's very effective!" )
+    console.log("Venusaur health: " + Venusaur.current_health);
  }
  
  
@@ -32,6 +33,7 @@ export let surf = () => {
     console.log("Lapras used surf!");
     Venusaur.current_health = Venusaur.current_health - dmgsurf;
     console.log("surf dealt " + dmgsurf + " hp to Venusaur")
+    console.log("Venusaur health: " + Venusaur.current_health)
  }
 
 
@@ -52,6 +54,7 @@ export let petalDance = () => {
      console.log("Venusaur used petal dance!");
      Lapras.current_health = Lapras.current_health - dmgPetal;
      console.log("petal dance dealt " + dmgPetal + "dmg to Lapras. It's very effective!" )
+     console.log("Lapras health: " + Lapras.current_health)
   }
   
   
@@ -72,18 +75,20 @@ export let sleepPowder = () => {
   
  
 export let synthesis = () => {
-    let synthHpRecovery = Venusaur.current_health + Venusaur.max_health*0.5 
+    let synthHpRecovery = Venusaur.max_health*0.5 
      console.log("Venusaur used synthesis!");
-     Venusaur.current_health = synthHpRecovery
+     Venusaur.current_health = Venusaur.current_health + synthHpRecovery
      console.log("Venusaur recovered " + synthHpRecovery + " hp to Venusaur")
+     console.log("Venusaur hp : " + Venusaur.current_health);
   }
  
   
 export let sludgeBomb = () => {
-    let dmgSludge = Venusaur.attack
+    let dmgSludge = Venusaur.attack*0.7
      console.log("Venusaur used sludge bomb!");
      Lapras.current_health = Lapras.current_health - dmgSludge;
      console.log("Venusaur dealt " + dmgSludge + " damage to Lapras");
+     console.log("Lapras health: " + Lapras.current_health)
      
   }
 
