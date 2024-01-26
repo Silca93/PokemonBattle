@@ -23,12 +23,13 @@ let currentIndex = 0;
             fightDesc.innerText = ''; 
             fightDesc.appendChild(p);
             currentIndex++; 
-        }
+            if (currentIndex == 2) {
+             nextButton.style.display="none"
+            }
+         }
                
       });
 // }
-
-
 
 
 //audio functions//
@@ -77,6 +78,10 @@ export function petalDanceFx () {
 export function sleepPowderFx () {
    let sleepPowderFx = new Audio("../public/assets/music/SleepPowder.mp3");
    sleepPowderFx.play();
+} 
+export function lowHpFx () {
+   let lowHpFx = new Audio("../public/assets/music/lowHp.mp3");
+   lowHpFx.play();
 } 
 
 
@@ -144,6 +149,7 @@ export let rest = () => {
 
 export let petalDance = () => {
    petalDanceFx();
+
    displayFightDesc("Venusaur used Petal Dance!");
    let dmgPetal = Venusaur.attack*1.5
    console.log("Venusaur used petal dance!");
@@ -200,6 +206,22 @@ export let sludgeBomb = () => {
 
   // game functions //
 
+export let VenusaurAttack = () => {
+   let VenusaurRandom = Math.floor(Math.random()*4);
+   console.log(VenusaurRandom);
+   if (VenusaurRandom == 0){
+      petalDance();
+   }else if (VenusaurRandom == 1){
+      synthesis();
+   }else if (VenusaurRandom == 2){
+      sleepPowder();
+   }else if (VenusaurRandom == 3) {
+      sludgeBomb();
+   }
+} 
+
+
+
 
 export let healthCheck = () => {
     let venuHealth = Venusaur.current_health;
@@ -207,8 +229,10 @@ export let healthCheck = () => {
     
     if (venuHealth < 1 ) {
        venuHealth = 0;
+       
               
     }else if (laprasHealth < 1) {
        laprasHealth = 0;
+       
      }
   }     

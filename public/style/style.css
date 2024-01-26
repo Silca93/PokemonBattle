@@ -108,6 +108,7 @@ body {
   right: 20px;
   background-color: rgb(133, 224, 133, 0.6);
   padding: 20px 30px;
+  /* display: none; */
 }
 
 .iceBeam {
