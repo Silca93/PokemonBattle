@@ -4,44 +4,27 @@ import { Lapras } from "./pokemon.js";
 import { selectConfuseRay, selectSurf, selectRest, selectIceBeam } from "./instances.js";
 import { nextButton, battleText } from "./instances.js";
 import { menuSound, battleTheme } from "./functions.js";
-import { goNext, displayFightDesc, textBattle } from "./functions.js";
+import { displayFightDesc, fightDesc } from "./functions.js";
 
 
 
 
-// // let initialText = document.createElement("p");
-// // initialText.innerText = "A wants to Battle B!";
-// // initialText.style.color = "white"
-// // battleText.appendChild(initialText);
-// // function appendLog(message) {
-// //    let p = document.createElement("p");
-// //    p.innerText = message;
-// //    battleText.appendChild(p);
-// // }
 
-// let goNext = (newText) => {
-//    nextButton.addEventListener("click", function() {
-//          let p = document.createElement("p");
-//          p.style.color = "white"
-//          p.style.fontFamily = "'Press Start 2P', system-ui"
-//          p.innerText = newText
-//          battleText.appendChild(p);
-//          menuSound();
-         
-      
-//    });
-// }
 // battleTheme();
 
-textBattle.innerHTML = "A wild venusaur appeared!"
-
-goNext("Venusaur wants to battle!");
-goNext("Lapras, go!")
+fightDesc.innerHTML = "A wild venusaur appeared!"
 
 
+// goNext("Lapras, go! \n \n What should Lapras do?" );
+// goNext("Select your attack")
+// goNext('what do we do now?')
 
 
-console.log("Venusaur wants to battle !!");
+
+
+
+
+
 console.log("Venusaur's health : " + Venusaur.max_health);
 console.log("Lapras's health : " + Lapras.max_health);
  

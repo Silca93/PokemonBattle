@@ -3,25 +3,33 @@ import { Venusaur } from "./pokemon.js";
 import { selectConfuseRay, selectRest, selectSurf, selectIceBeam, battleText } from "./instances.js";
 import { nextButton } from "./instances.js";
 //text functions//
-export let goNext = (newText) => {
-      nextButton.addEventListener("click", function() {
-               menuSound();
-            let p = document.createElement("p");
-            p.style.color = "white"
-            p.style.fontFamily = "'Press Start 2P', system-ui"
-            p.innerText = newText
-            battleText.appendChild(p);
-               
-      });
-}
-
-
-export let textBattle = document.querySelector('.fightDesc')
+export let fightDesc = document.querySelector('.fightDesc')
 
 export let displayFightDesc = (myDesc) => {
    menuSound();
-   textBattle.innerHTML = myDesc;
+   fightDesc.innerHTML = myDesc;
 }
+
+let texts = ["Lapras, go!", "Select your attack :"];
+let currentIndex = 0;
+// export let goNext = (newText) => {
+      nextButton.addEventListener("click", function() {
+         if (currentIndex < texts.length) {
+            menuSound();
+            let p = document.createElement("p");
+            p.style.color = "white";
+            p.style.fontFamily = "'Press Start 2P', system-ui";
+            p.innerText = texts[currentIndex];
+            fightDesc.innerText = ''; 
+            fightDesc.appendChild(p);
+            currentIndex++; 
+        }
+               
+      });
+// }
+
+
+
 
 //audio functions//
 
@@ -82,6 +90,8 @@ export let icebeam = () => {
    displayFightDesc('Lapras used Ice Beam!')
    Venusaur.current_health = Venusaur.current_health - dmgIcebeam;
    console.log("Icebeam dealt " + dmgIcebeam + " hp to Venusaur. It's very effective!" )
+   
+   fightDesc.innerHTML = "Icebeam dealt " + dmgIcebeam + " hp to Venusaur. \n It's very effective!"
    console.log("Venusaur health: " + Venusaur.current_health);
  }
  
@@ -97,9 +107,10 @@ export let confuseRay = () => {
        displayFightDesc("Lapras used confuse ray!" + "\n Venusaur became confused!")
 
        return true;
+
     }else {
       //  console.log("Lapras used confuse ray! but it failed...");
-       textBattle.innerHTML = "Lapras used confuse ray! but it failed..."
+       fightDesc.innerHTML = "Lapras used confuse ray! but it failed..."
       return false;
     }
  }
@@ -118,11 +129,12 @@ export let surf = () => {
 
 export let rest = () => {
    restFx();
-   displayFightDesc("Lapras used rest! A mimir..")
+   displayFightDesc("Lapras used rest! A mimir.. \n Lapras rested to recover his health.")
    let hpRecovery = Lapras.max_health;
     console.log("Lapras used rest! Lapras fell asleep");
     Lapras.current_health = Lapras.max_health;
     console.log("Lapras recovered " + hpRecovery + " hp");
+    
     
  }
 
@@ -137,7 +149,7 @@ export let petalDance = () => {
    console.log("Venusaur used petal dance!");
    Lapras.current_health = Lapras.current_health - dmgPetal;
    console.log("petal dance dealt " + dmgPetal + "dmg to Lapras. It's very effective!" ) 
-   textBattle.innerHTML = "Venusaur used petal dance. \n Venusaur dealt " + dmgPetal + " dmg to Lapras. \n It's very effective!"
+   fightDesc.innerHTML = "Venusaur used petal dance. \n Venusaur dealt " + dmgPetal + " dmg to Lapras. \n It's very effective!"
    console.log("Lapras health: " + Lapras.current_health)
   }
   
@@ -150,7 +162,7 @@ export let sleepPowder = () => {
      console.log(sleepChance);
      
      if (sleepChance > 0.25) {
-      textBattle.innerHTML = "venusaur used sleep powder! \n Lapras fell asleep..";
+      fightDesc.innerHTML = "venusaur used sleep powder! \n Lapras fell asleep..";
       
         console.log("Venusaur used sleep powder!");
         console.log("Lapras fell asleep.");
