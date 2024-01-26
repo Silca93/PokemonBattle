@@ -1,5 +1,6 @@
 import { Lapras } from "./pokemon.js";
 import { Venusaur } from "./pokemon.js";
+import { selectConfuseRay, selectRest, selectSurf, selectIceBeam } from "./instances.js";
 
 
 //Lapras moves //

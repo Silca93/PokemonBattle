@@ -1,0 +1,33 @@
+body{
+    height: 100dvh;
+    width: 100dvw;
+    display: flex;
+    background: gray;
+    justify-content: center;
+    align-items: center;
+}
+
+.selectLeft {
+    width: 50%;
+    height: 100%;
+    background-image: url(../assets/select_lapras.gif);
+    background-size: 150%;
+    margin-right: 200px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.selectRight {
+    width: 50%;
+    height: 100%;
+    background-image: url(../assets/select_pokemon-venusaur.gif);
+    background-repeat: no-repeat;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

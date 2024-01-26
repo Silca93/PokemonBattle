@@ -2,45 +2,48 @@ import { icebeam, synthesis, confuseRay, surf, rest, sludgeBomb, petalDance, sle
 import { Venusaur } from "./pokemon.js";
 import { Lapras } from "./pokemon.js";
 import { selectConfuseRay, selectSurf, selectRest, selectIceBeam } from "./instances.js";
+import { nextButton, battleText } from "./instances.js";
 
-let battleText = document.querySelector(".battleText");
-// let initialText = document.createElement("p");
-// initialText.innerText = "A wants to Battle B!";
-// initialText.style.color = "white"
-// battleText.appendChild(initialText);
-// function appendLog(message) {
-//    let p = document.createElement("p");
-//    p.innerText = message;
-//    battleText.appendChild(p);
-// }
-
+// let logQueue = [];
 
 function appendLog(message) {
-   let p = document.createElement("p");
-   p.innerText = message;
-   battleText.appendChild(p);
+   
 }
 
-appendLog("A wants to battle B!");
+
+// // let initialText = document.createElement("p");
+// // initialText.innerText = "A wants to Battle B!";
+// // initialText.style.color = "white"
+// // battleText.appendChild(initialText);
+// // function appendLog(message) {
+// //    let p = document.createElement("p");
+// //    p.innerText = message;
+// //    battleText.appendChild(p);
+// // }
+
+
+// nextButton.addEventListener("click", function() {
+//     if (logQueue.length > 0) {
+//         let p = document.createElement("p");
+//         p.innerText = logQueue.shift();
+//         battleText.appendChild(p);
+//     }
+// });
+
+
 appendLog("start!");
 appendLog("Venusaur wants to battle !!");
 appendLog("Venusaur's health : " + Venusaur.max_health);
 appendLog("Lapras's health : " + Lapras.max_health);
 
 
-console.log = (function(originalLogFunc) {
-   return function(message) {
-       originalLogFunc(message); // Logs the message to the console
-       appendLog(message); // Appends the message to the battleText div
-   };
-}(console.log));
+// console.log = (function(originalLogFunc) {
+//    return function(message) {
+//        originalLogFunc(message); // Logs the message to the console
+//        appendLog(message); // Appends the message to the battleText div
+//    };
+// }(console.log));
 
-
-
-
-console.log("A wants to battle B!");
-
-console.log("start!");
 console.log("Venusaur wants to battle !!");
 console.log("Venusaur's health : " + Venusaur.max_health);
 console.log("Lapras's health : " + Lapras.max_health);
