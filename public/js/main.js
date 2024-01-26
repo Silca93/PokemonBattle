@@ -3,8 +3,8 @@ import { Venusaur } from "./pokemon.js";
 import { Lapras } from "./pokemon.js";
 import { selectConfuseRay, selectSurf, selectRest, selectIceBeam } from "./instances.js";
 import { nextButton, battleText } from "./instances.js";
-import { menuSound } from "./functions.js";
-
+import { menuSound, battleTheme } from "./functions.js";
+import { goNext, displayFightDesc, textBattle } from "./functions.js";
 
 
 
@@ -19,28 +19,27 @@ import { menuSound } from "./functions.js";
 // //    battleText.appendChild(p);
 // // }
 
+// let goNext = (newText) => {
+//    nextButton.addEventListener("click", function() {
+//          let p = document.createElement("p");
+//          p.style.color = "white"
+//          p.style.fontFamily = "'Press Start 2P', system-ui"
+//          p.innerText = newText
+//          battleText.appendChild(p);
+//          menuSound();
+         
+      
+//    });
+// }
+// battleTheme();
 
-nextButton.addEventListener("click", function() {
-        let p = document.createElement("p");
-        p.style.color = "white"
-        p.style.fontFamily = "'Press Start 2P', system-ui"
-        p.innerText = "Venusaur wants to battle!"
-        battleText.appendChild(p);
-        menuSound();
-        
-    
-});
+textBattle.innerHTML = "A wild venusaur appeared!"
+
+goNext("Venusaur wants to battle!");
+goNext("Lapras, go!")
 
 
 
-
-
-// console.log = (function(originalLogFunc) {
-//    return function(message) {
-//        originalLogFunc(message); // Logs the message to the console
-//        appendLog(message); // Appends the message to the battleText div
-//    };
-// }(console.log));
 
 console.log("Venusaur wants to battle !!");
 console.log("Venusaur's health : " + Venusaur.max_health);
@@ -50,7 +49,7 @@ console.log("Lapras's health : " + Lapras.max_health);
 // Lapras IceBeam attack //           
   selectIceBeam.addEventListener("click", function() {
       icebeam();
-      appendLog("Ice Beam was used.");
+      
            
       healthCheck();
 
@@ -92,7 +91,7 @@ console.log("Lapras's health : " + Lapras.max_health);
 // Lapras Surf attack //    
   selectSurf.addEventListener("click", function() {
       surf();
-      appendLog("Surf was used.");
+      
       
       healthCheck();
 
@@ -135,7 +134,7 @@ console.log("Lapras's health : " + Lapras.max_health);
 // Lapras Rest attack //    
   selectRest.addEventListener("click", function() {
       rest();
-      appendLog("Rest was used.");
+      
 
       healthCheck();
 
@@ -179,7 +178,7 @@ console.log("Lapras's health : " + Lapras.max_health);
 // Lapras confusion attack //    
   selectConfuseRay.addEventListener("click", function() {
    confuseRay();
-   appendLog("Rest was used.");
+   
 
    healthCheck();
 

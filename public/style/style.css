@@ -146,3 +146,10 @@ body {
 
 
 /*# sourceMappingURL=app.css.map */
+
+
+.fightDesc {
+  color: white;
+  font-size: 1.1em;
+  font-family: 'Press Start 2P', system-ui;;
+}
