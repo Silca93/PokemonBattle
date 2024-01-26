@@ -22,7 +22,7 @@ import { VenusaurAttack } from "./functions.js";
 console.log("Venusaur's health : " + Venusaur.max_health);
 console.log("Lapras's health : " + Lapras.max_health);
  
-while (Venusaur.current_health > 1 && Lapras.current_health > 1) {
+// while (Venusaur.current_health > 1 && Lapras.current_health > 1) {
    
 fightDesc.innerHTML = "A wild venusaur appeared!"
    // Lapras IceBeam attack //           
@@ -158,7 +158,7 @@ fightDesc.innerHTML = "A wild venusaur appeared!"
 
    });
 
-}  
+// }  
        
     
     

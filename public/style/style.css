@@ -17,20 +17,203 @@ body {
   background-repeat: no-repeat;
 }
 
-#Venusaur {
+/* Venussaur healthbar css*/
+.venusaurHealthBar{
+ 
+  height: 100px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 2px 6px rgba(0,0,0,0.95);
+  -webkit-box-shadow: 0px 1px 2px 6px rgba(0,0,0,0.95);
+  -moz-box-shadow: 0px 1px 2px 6px rgba(0,0,0,0.95);
+  background-color: beige;
+  position: absolute;
+  top: 15rem;
+  right: 20rem;
+}
+
+.topBar {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  position: relative;
+  
+}
+.Name{
+  font-family: 'Press Start 2P', system-ui;
+  display: flex;
+  margin-left: 10px;
+  width: 50%;
+  height: 100%;
+}
+
+.Name h3{
+   font-family: 'Press Start 2P', system-ui;
+   font-size: 15px;
+
+}
+
+.Lvl {
+  display: flex;
+  position: absolute;
+  margin-left: 240px;
+  width: 50%;
+  height: 100%;
+}
+
+.Lvl h3 {
+  font-family: 'Press Start 2P', system-ui;
+   font-size: 10px;
+
+}
+
+.botBar {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  
+}
+
+.healthBar {
+  box-shadow: 0px 1px 0px 4px rgba(0,0,0,0.95);
+-webkit-box-shadow: 0px 1px 0px 4px rgba(0,0,0,0.95);
+-moz-box-shadow: 0px 1px 0px 4px rgba(0,0,0,0.95);
+  height: 20px;
+  width: 200px;
+  position: absolute;
+  right: 10px;
+  border-radius: 5px;
+  background-color: rgb(48, 185, 48);
+}
+
+.HP{
+  background-color: rgb(39, 16, 16);
+  width: 30px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  height: 20px;
+  display: flex;
+
+}
+#hpIcon {
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+  font-size: 10px;
+  font-weight:  bolder;
+}
+
+.health {
+  width: 170px;
+}
+#Lapras {
   position: absolute ;
   bottom: 150px;
   left: 450px;
   height: 300px;
   z-index: -1;
 }
-#Lapras {
+#Venusaur {
   position: absolute ;
   top: 370px;
   right: 550px;
   height: 150px;
+
+}
+ /*Lapras healthbar components*/
+
+ .laprasHealthBar{
+ 
+  height: 100px;
+  width: 300px;
+  border-radius: 10px;
+  box-shadow: 0px 1px 2px 6px rgba(0,0,0,0.95);
+  -webkit-box-shadow: 0px 1px 2px 6px rgba(0,0,0,0.95);
+  -moz-box-shadow: 0px 1px 2px 6px rgba(0,0,0,0.95);
+  background-color: beige;
+  position: absolute;
+  bottom: 25rem;
+  left: 15rem;
 }
 
+.topBar2 {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  position: relative;
+  
+}
+.Name2{
+  font-family: 'Press Start 2P', system-ui;
+  display: flex;
+  margin-left: 10px;
+  width: 50%;
+  height: 100%;
+}
+
+.Name2 h3{
+   font-family: 'Press Start 2P', system-ui;
+   font-size: 15px;
+
+}
+
+.Lvl2 {
+  display: flex;
+  position: absolute;
+  margin-left: 240px;
+  width: 50%;
+  height: 100%;
+}
+
+.Lvl2 h3 {
+  font-family: 'Press Start 2P', system-ui;
+   font-size: 10px;
+
+}
+
+.botBar2 {
+  width: 100%;
+  height: 50%;
+  position: relative;
+  
+}
+
+.healthBar2 {
+  box-shadow: 0px 1px 0px 4px rgba(0,0,0,0.95);
+-webkit-box-shadow: 0px 1px 0px 4px rgba(0,0,0,0.95);
+-moz-box-shadow: 0px 1px 0px 4px rgba(0,0,0,0.95);
+  height: 20px;
+  width: 200px;
+  position: absolute;
+  right: 10px;
+  border-radius: 5px;
+  background-color: rgb(48, 185, 48);
+}
+
+.HP2{
+  background-color: rgb(39, 16, 16);
+  width: 30px;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  height: 20px;
+  display: flex;
+
+}
+#hpIcon2 {
+  color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 10px;
+  font-size: 10px;
+  font-weight:  bolder;
+}
+
+.health2 {
+  width: 170px;
+}
 
 
 .hudContainer {
