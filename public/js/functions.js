@@ -5,10 +5,24 @@ import { nextButton } from "./instances.js";
 //text functions//
 export let fightDesc = document.querySelector('.fightDesc')
 
-export let displayFightDesc = (myDesc) => {
+export let displayFightDesc1 = (myDesc) => {
    menuSound();
-   fightDesc.innerHTML = myDesc;
+   let p = document.createElement("p");
+   p.style.color = "white";
+   p.style.fontFamily = "'Press Start 2P', system-ui";
+   p.innerText = myDesc;
+   fightDesc.appendChild(p);
 }
+
+export let displayFightDesc2 = (myDesc) => {
+   menuSound();
+   let p = document.createElement("p");
+   p.style.color = "white";
+   p.style.fontFamily = "'Press Start 2P', system-ui";
+   p.innerText = myDesc;
+   fightDesc.appendChild(p);
+}
+
 
 let texts = ["Lapras, go!", "Select your attack :"];
 let currentIndex = 0;
@@ -86,13 +100,14 @@ export function lowHpFx () {
 
 
 //Lapras moves //
-
+let battleStates = [];
+   
 
 export let icebeam = () => {
    iceBeamFx();
    let dmgIcebeam = Lapras.attack*1.5;
    // textBattle.innerText = 'Lapras used Ice Beam!'
-   displayFightDesc('Lapras used Ice Beam!')
+   displayFightDesc1('Lapras used Ice Beam!')
    Venusaur.current_health = Venusaur.current_health - dmgIcebeam;
    console.log("Icebeam dealt " + dmgIcebeam + " hp to Venusaur. It's very effective!" )
    
@@ -109,7 +124,7 @@ export let confuseRay = () => {
     if (confuseChance > 0.35) {
       //  console.log("Lapras used confuse ray!");
       //  console.log("Venusaur became confused!");
-       displayFightDesc("Lapras used confuse ray!" + "\n Venusaur became confused!")
+       displayFightDesc1("Lapras used confuse ray!" + "\n Venusaur became confused!")
 
        return true;
 
@@ -124,7 +139,7 @@ export let confuseRay = () => {
 export let surf = () => {
    surfFx();
    let dmgsurf = Lapras.attack*0.75 
-   displayFightDesc("Lapras used surf!")
+   displayFightDesc1("Lapras used surf!")
    console.log("Lapras used surf!");
    Venusaur.current_health = Venusaur.current_health - dmgsurf;
    console.log("surf dealt " + dmgsurf + " hp to Venusaur")
@@ -134,7 +149,7 @@ export let surf = () => {
 
 export let rest = () => {
    restFx();
-   displayFightDesc("Lapras used rest! A mimir.. \n Lapras rested to recover his health.")
+   displayFightDesc1("Lapras used rest! A mimir.. \n Lapras rested to recover his health.")
    let hpRecovery = Lapras.max_health;
     console.log("Lapras used rest! Lapras fell asleep");
     Lapras.current_health = Lapras.max_health;
@@ -150,7 +165,7 @@ export let rest = () => {
 export let petalDance = () => {
    petalDanceFx();
 
-   displayFightDesc("Venusaur used Petal Dance!");
+   displayFightDesc2("Venusaur used Petal Dance!");
    let dmgPetal = Venusaur.attack*1.5
    console.log("Venusaur used petal dance!");
    Lapras.current_health = Lapras.current_health - dmgPetal;
@@ -163,7 +178,7 @@ export let petalDance = () => {
   
 export let sleepPowder = () => {
    sleepPowderFx()
-   displayFightDesc("Venusaur used sleep powder!")
+   displayFightDesc2("Venusaur used sleep powder!")
      let sleepChance = Math.random();
      console.log(sleepChance);
      
@@ -182,7 +197,7 @@ export let sleepPowder = () => {
  
 export let synthesis = () => {
 
-   displayFightDesc("Venusaur used synthesis!")
+   displayFightDesc2("Venusaur used synthesis!")
    recovery();
     let synthHpRecovery = Venusaur.max_health*0.5 
      console.log("Venusaur used synthesis!");
@@ -194,7 +209,7 @@ export let synthesis = () => {
   
 export let sludgeBomb = () => {
    sludgeBombFx()
-   displayFightDesc("Venusaur used Sludge Bomb!")
+   displayFightDesc2("Venusaur used Sludge Bomb!")
     let dmgSludge = Venusaur.attack*0.7
      console.log("Venusaur used sludge bomb!");
      Lapras.current_health = Lapras.current_health - dmgSludge;
