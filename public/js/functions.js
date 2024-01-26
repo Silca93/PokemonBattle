@@ -2,6 +2,13 @@ import { Lapras } from "./pokemon.js";
 import { Venusaur } from "./pokemon.js";
 import { selectConfuseRay, selectRest, selectSurf, selectIceBeam } from "./instances.js";
 
+//audio functions//
+
+export function menuSound () {
+   let blip = new Audio("Abutton.mp3");
+   blip.play();
+ } 
+
 
 //Lapras moves //
 

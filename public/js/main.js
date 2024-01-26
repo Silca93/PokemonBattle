@@ -3,12 +3,10 @@ import { Venusaur } from "./pokemon.js";
 import { Lapras } from "./pokemon.js";
 import { selectConfuseRay, selectSurf, selectRest, selectIceBeam } from "./instances.js";
 import { nextButton, battleText } from "./instances.js";
+import { menuSound } from "./functions.js";
 
-// let logQueue = [];
 
-function appendLog(message) {
-   
-}
+
 
 
 // // let initialText = document.createElement("p");
@@ -22,19 +20,19 @@ function appendLog(message) {
 // // }
 
 
-// nextButton.addEventListener("click", function() {
-//     if (logQueue.length > 0) {
-//         let p = document.createElement("p");
-//         p.innerText = logQueue.shift();
-//         battleText.appendChild(p);
-//     }
-// });
+nextButton.addEventListener("click", function() {
+        let p = document.createElement("p");
+        p.style.color = "white"
+        p.style.fontFamily = "'Press Start 2P', system-ui"
+        p.innerText = "Venusaur wants to battle!"
+        battleText.appendChild(p);
+        menuSound();
+        
+    
+});
 
 
-appendLog("start!");
-appendLog("Venusaur wants to battle !!");
-appendLog("Venusaur's health : " + Venusaur.max_health);
-appendLog("Lapras's health : " + Lapras.max_health);
+
 
 
 // console.log = (function(originalLogFunc) {
