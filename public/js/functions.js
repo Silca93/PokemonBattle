@@ -105,6 +105,13 @@ export function lowHpFx () {
    let lowHpFx = new Audio("../public/assets/music/lowHp.mp3");
    lowHpFx.play();
 } 
+export function victoryFx () {
+   let victoryFx = new Audio("../public/assets/music/victoryTheme.mp3");
+   victoryFx.play();
+} 
+
+
+ 
 //Hp bar functionality//
 
 
