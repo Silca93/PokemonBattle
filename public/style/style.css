@@ -73,6 +73,9 @@ body {
   height: 50%;
   position: relative;
   
+  /* background-color: red; */
+  
+  
 }
 
 .healthBar {
@@ -84,7 +87,8 @@ body {
   position: absolute;
   right: 10px;
   border-radius: 5px;
-  background-color: rgb(48, 185, 48);
+  display: flex;
+  background-color: transparent
 }
 
 .HP{
@@ -108,7 +112,12 @@ body {
 
 .health {
   width: 170px;
+  height: 20px;
+  background-color: rgb(48, 185, 48);
+  transition: width 2s ease;
 }
+
+
 #Lapras {
   position: absolute ;
   bottom: 150px;
@@ -188,9 +197,10 @@ body {
   height: 20px;
   width: 200px;
   position: absolute;
+  display: flex;
   right: 10px;
   border-radius: 5px;
-  background-color: rgb(48, 185, 48);
+  background-color: transparent
 }
 
 .HP2{
@@ -214,6 +224,9 @@ body {
 
 .health2 {
   width: 170px;
+  height: 20px;
+  background-color: rgb(48, 185, 48);
+  transition: width 2s ease;
 }
 
 

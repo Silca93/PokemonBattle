@@ -4,3 +4,9 @@ export let selectRest = document.querySelector(".rest")
 export let selectConfuseRay = document.querySelector(".confuseRay")
 export let nextButton = document.getElementById("next");
 export let battleText = document.querySelector(".battleText");
+
+
+//selecting pokemons spirtes//
+
+export let venusaurSprite = document.querySelector("#Venusaur")
+export let laprasSprite = document.querySelector("#Lapras")

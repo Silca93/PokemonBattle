@@ -1,7 +1,7 @@
 import { Lapras } from "./pokemon.js";
 import { Venusaur } from "./pokemon.js";
 import { selectConfuseRay, selectRest, selectSurf, selectIceBeam, battleText } from "./instances.js";
-import { nextButton } from "./instances.js";
+import { nextButton, venusaurSprite, laprasSprite } from "./instances.js";
 //text functions//
 export let fightDesc = document.querySelector('.fightDesc')
 
@@ -30,6 +30,7 @@ let currentIndex = 0;
       nextButton.addEventListener("click", function() {
          if (currentIndex < texts.length) {
             menuSound();
+            
             let p = document.createElement("p");
             p.style.color = "white";
             p.style.fontFamily = "'Press Start 2P', system-ui";
@@ -47,7 +48,14 @@ let currentIndex = 0;
 
 
 //audio functions//
-
+export function venusaurCry () {
+   let venusaurCry = new Audio("../public/assets/music/Venusaur.mp3");
+   venusaurCry.play();
+} 
+export function laprasCry () {
+   let laprasCry = new Audio("../public/assets/music/Lapras.mp3");
+   laprasCry.play();
+} 
 export function menuSound () {
    let blip = new Audio("../public/assets/music/Abutton.mp3");
    blip.play();
@@ -97,6 +105,72 @@ export function lowHpFx () {
    let lowHpFx = new Audio("../public/assets/music/lowHp.mp3");
    lowHpFx.play();
 } 
+//Hp bar functionality//
+
+
+
+export function iceupdateHPBar() {
+   let venuhpBar = document.querySelector(".health");
+   let currentWidth = parseInt(window.getComputedStyle(venuhpBar).width);
+   let decreaseAmount = 110;
+   let newWidth = currentWidth - decreaseAmount;
+   
+   // Ensure the width doesn't go below 0
+   newWidth = Math.max(newWidth, 0);
+
+   venuhpBar.style.width = newWidth + 'px';
+
+}
+
+export function surfupdateHPBar() {
+   let venuhpBar = document.querySelector(".health");
+   let currentWidth = parseInt(window.getComputedStyle(venuhpBar).width);
+   let decreaseAmount = 55;
+   let newWidth = currentWidth - decreaseAmount;
+   
+   // Ensure the width doesn't go below 0
+   newWidth = Math.max(newWidth, 0);
+
+   venuhpBar.style.width = newWidth + 'px';
+
+}
+export function sludgeupdateHPBar() {
+   let laprashpBar = document.querySelector(".health2");
+   let currentWidth = parseInt(window.getComputedStyle(laprashpBar).width);
+   let decreaseAmount = 57;
+   let newWidth = currentWidth - decreaseAmount;
+   
+   // Ensure the width doesn't go below 0
+   newWidth = Math.max(newWidth, 0);
+
+   laprashpBar.style.width = newWidth + 'px';
+
+}
+export function petalupdateHPBar() {
+   let laprashpBar = document.querySelector(".health2");
+   let currentWidth = parseInt(window.getComputedStyle(laprashpBar).width);
+   let decreaseAmount = 120;
+   let newWidth = currentWidth - decreaseAmount;
+   
+   // Ensure the width doesn't go below 0
+   newWidth = Math.max(newWidth, 0);
+
+   laprashpBar.style.width = newWidth + 'px';
+
+}
+
+export function venusaurDeath() {
+   venusaurSprite.style.display ="none"
+}
+
+
+
+export function laprasDeath() {
+   laprasSprite.style.display ="none"
+}
+
+  
+
 
 
 //Lapras moves //
@@ -105,6 +179,7 @@ let battleStates = [];
 
 export let icebeam = () => {
    iceBeamFx();
+   iceupdateHPBar()
    let dmgIcebeam = Lapras.attack*1.5;
    // textBattle.innerText = 'Lapras used Ice Beam!'
    displayFightDesc1('Lapras used Ice Beam!')
@@ -112,6 +187,7 @@ export let icebeam = () => {
    console.log("Icebeam dealt " + dmgIcebeam + " hp to Venusaur. It's very effective!" )
    
    fightDesc.innerHTML = "Icebeam dealt " + dmgIcebeam + " hp to Venusaur. \n It's very effective!"
+   
    console.log("Venusaur health: " + Venusaur.current_health);
  }
  
@@ -138,6 +214,7 @@ export let confuseRay = () => {
 
 export let surf = () => {
    surfFx();
+   surfupdateHPBar()
    let dmgsurf = Lapras.attack*0.75 
    displayFightDesc1("Lapras used surf!")
    console.log("Lapras used surf!");
@@ -164,7 +241,7 @@ export let rest = () => {
 
 export let petalDance = () => {
    petalDanceFx();
-
+   petalupdateHPBar();
    displayFightDesc2("Venusaur used Petal Dance!");
    let dmgPetal = Venusaur.attack*1.5
    console.log("Venusaur used petal dance!");
@@ -209,6 +286,7 @@ export let synthesis = () => {
   
 export let sludgeBomb = () => {
    sludgeBombFx()
+   sludgeupdateHPBar();
    displayFightDesc2("Venusaur used Sludge Bomb!")
     let dmgSludge = Venusaur.attack*0.7
      console.log("Venusaur used sludge bomb!");
