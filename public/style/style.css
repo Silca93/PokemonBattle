@@ -48,6 +48,16 @@ body {
   width: 50%;
   height: 100%;
 }
+#venusaurGender {
+  color: blue;
+  font-family: 'Press Start 2P', system-ui;
+  position: absolute;
+  
+  left: 133px;
+  bottom: 4px;
+  
+
+}
 
 .Name h3{
    font-family: 'Press Start 2P', system-ui;
@@ -160,14 +170,29 @@ body {
 .Name2{
   font-family: 'Press Start 2P', system-ui;
   display: flex;
+  gap: 10px;
   margin-left: 10px;
   width: 50%;
   height: 100%;
 }
 
 .Name2 h3{
+  display: flex;
    font-family: 'Press Start 2P', system-ui;
    font-size: 15px;
+   
+   
+
+}
+
+#laprasGender {
+  color: rgb(235, 24, 24);
+  font-family: 'Press Start 2P', system-ui;
+  position: absolute;
+  
+  left: 103px;
+  bottom: 4px;
+  
 
 }
 
@@ -303,10 +328,13 @@ body {
 
 #next {
   position: absolute;
+  font-family: 'Press Start 2P', system-ui;
+  font-size: 20px;
   bottom: 0px;
   right: 20px;
-  background-color: rgb(133, 224, 133, 0.6);
+  background-color: rgba(235, 247, 5, 0.9);
   padding: 20px 30px;
+  cursor: pointer;
   /* display: none; */
 }
 
@@ -314,8 +342,8 @@ body {
   cursor: pointer;
 }
 .iceBeam:hover {
-  border: solid 2px black;
-  padding: 5px 5px;
+  color: red;
+  
 }
 
 .surf {
@@ -323,8 +351,7 @@ body {
 }
 
 .surf:hover {
-  border: solid 2px black;
-  padding: 5px 5px;
+  color: red;
 }
 
 .rest {
@@ -332,16 +359,14 @@ body {
 }
 
 .rest:hover {
-  border: solid 2px black;
-  padding: 5px 5px;
+  color: red;
 }
 
 .confuseRay {
   cursor: pointer;
 }
 .confuseRay:hover {
-  border: solid 2px black;
-  padding: 5px 5px;
+  color: red;
 }
 
 

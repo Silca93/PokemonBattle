@@ -7,6 +7,6 @@ export let battleText = document.querySelector(".battleText");
 export let combatHUD = document.querySelector(".combatHUD");
 
 //selecting pokemons spirtes//
-
+export let laprasHealthBar = document.querySelector(".laprasHealthBar")
 export let venusaurSprite = document.querySelector("#Venusaur")
 export let laprasSprite = document.querySelector("#Lapras")

@@ -1,24 +1,26 @@
 import { Lapras } from "./pokemon.js";
 import { Venusaur } from "./pokemon.js";
 import { selectConfuseRay, selectRest, selectSurf, selectIceBeam, battleText } from "./instances.js";
-import { nextButton, venusaurSprite, laprasSprite } from "./instances.js";
+import { nextButton, venusaurSprite, laprasSprite, laprasHealthBar, combatHUD } from "./instances.js";
 //text functions//
 export let fightDesc = document.querySelector('.fightDesc')
 
 export let displayFightDesc1 = (myDesc) => {
-   menuSound();
+   
    let p = document.createElement("p");
    p.style.color = "white";
    p.style.fontFamily = "'Press Start 2P', system-ui";
+   fightDesc.innerHTML = "";
    p.innerText = myDesc;
    fightDesc.appendChild(p);
 }
 
 export let displayFightDesc2 = (myDesc) => {
-   menuSound();
+   
    let p = document.createElement("p");
    p.style.color = "white";
    p.style.fontFamily = "'Press Start 2P', system-ui";
+   fightDesc.innerHTML = "";
    p.innerText = myDesc;
    fightDesc.appendChild(p);
 }
@@ -38,8 +40,19 @@ let currentIndex = 0;
             fightDesc.innerText = ''; 
             fightDesc.appendChild(p);
             currentIndex++; 
+            if(currentIndex == 1){
+               setTimeout(() => {
+                  laprasCry();
+               }, 500)
+               
+               laprasSprite.style.display = "block"
+               laprasHealthBar.style.display = "block"
+               
+
+            }
             if (currentIndex == 2) {
-             nextButton.style.display="none"
+             nextButton.style.display="none";
+             combatHUD.style.display="flex"
             }
          }
                
@@ -64,6 +77,20 @@ export function menuSound () {
 export function battleTheme () {
    let theme = new Audio("../public/assets/music/mainTheme.mp3");
    theme.play();
+} 
+export function hit () {
+   let hit = new Audio("../public/assets/music/hit.mp3");
+   hit.play();
+} 
+
+export function superEffective () {
+   let spEffective = new Audio("../public/assets/music/supereffective.mp3");
+   spEffective.play();
+} 
+
+export function notEffective () {
+   let notEffective = new Audio("../public/assets/music/noteffective.mp3");
+   notEffective.play();
 } 
 
 
@@ -109,6 +136,10 @@ export function victoryFx () {
    let victoryFx = new Audio("../public/assets/music/victoryTheme.mp3");
    victoryFx.play();
 } 
+export function faintFx () {
+   let faintFx = new Audio("../public/assets/music/faint.mp3");
+   faintFx.play();
+} 
 
 
  
@@ -122,7 +153,6 @@ export function iceupdateHPBar() {
    let decreaseAmount = 110;
    let newWidth = currentWidth - decreaseAmount;
    
-   // Ensure the width doesn't go below 0
    newWidth = Math.max(newWidth, 0);
 
    venuhpBar.style.width = newWidth + 'px';
@@ -135,7 +165,6 @@ export function surfupdateHPBar() {
    let decreaseAmount = 55;
    let newWidth = currentWidth - decreaseAmount;
    
-   // Ensure the width doesn't go below 0
    newWidth = Math.max(newWidth, 0);
 
    venuhpBar.style.width = newWidth + 'px';
@@ -147,7 +176,7 @@ export function sludgeupdateHPBar() {
    let decreaseAmount = 57;
    let newWidth = currentWidth - decreaseAmount;
    
-   // Ensure the width doesn't go below 0
+   
    newWidth = Math.max(newWidth, 0);
 
    laprashpBar.style.width = newWidth + 'px';
@@ -159,7 +188,6 @@ export function petalupdateHPBar() {
    let decreaseAmount = 120;
    let newWidth = currentWidth - decreaseAmount;
    
-   // Ensure the width doesn't go below 0
    newWidth = Math.max(newWidth, 0);
 
    laprashpBar.style.width = newWidth + 'px';
@@ -169,7 +197,6 @@ export function petalupdateHPBar() {
 export function venusaurDeath() {
    venusaurSprite.style.display ="none"
 }
-
 
 
 export function laprasDeath() {
@@ -186,14 +213,32 @@ let battleStates = [];
 
 export let icebeam = () => {
    iceBeamFx();
-   iceupdateHPBar()
+   setTimeout(function() {
+      
+      superEffective();
+    }, 2300);
+    setTimeout(function() {
+      
+      venuIsHit();
+    }, 2400);
+    setTimeout(function() {
+      
+      iceupdateHPBar();
+    }, 2600);
+   
    let dmgIcebeam = Lapras.attack*1.5;
    // textBattle.innerText = 'Lapras used Ice Beam!'
-   displayFightDesc1('Lapras used Ice Beam!')
+   
+   displayFightDesc1('Lapras used Ice Beam!' )
+   setTimeout(function() {
+      displayFightDesc2("Its super effective!")
+
+   }, 1000)
+   
    Venusaur.current_health = Venusaur.current_health - dmgIcebeam;
    console.log("Icebeam dealt " + dmgIcebeam + " hp to Venusaur. It's very effective!" )
    
-   fightDesc.innerHTML = "Icebeam dealt " + dmgIcebeam + " hp to Venusaur. \n It's very effective!"
+   
    
    console.log("Venusaur health: " + Venusaur.current_health);
  }
@@ -201,13 +246,18 @@ export let icebeam = () => {
  
  
 export let confuseRay = () => {
-   confuseRayFx();
+   
     let confuseChance = Math.random();
     
     if (confuseChance > 0.35) {
       //  console.log("Lapras used confuse ray!");
       //  console.log("Venusaur became confused!");
-       displayFightDesc1("Lapras used confuse ray!" + "\n Venusaur became confused!")
+      confuseRayFx();
+      displayFightDesc1("Lapras used confuse ray!")
+      setTimeout(() => {
+         displayFightDesc2("Venusaur became confused!")
+      }, 2000);
+      
 
        return true;
 
@@ -221,9 +271,24 @@ export let confuseRay = () => {
 
 export let surf = () => {
    surfFx();
-   surfupdateHPBar()
+   setTimeout(() => {
+      notEffective();
+   }, 2000);
+   setTimeout(function() {
+      
+      venuIsHit();
+    }, 2100);
+   setTimeout(() => {
+     surfupdateHPBar() ;
+   }, 2500);
+   
    let dmgsurf = Lapras.attack*0.75 
    displayFightDesc1("Lapras used surf!")
+   setTimeout(() => {
+      displayFightDesc2("It's not very effective")
+      
+   }, 2000);
+   
    console.log("Lapras used surf!");
    Venusaur.current_health = Venusaur.current_health - dmgsurf;
    console.log("surf dealt " + dmgsurf + " hp to Venusaur")
@@ -248,13 +313,27 @@ export let rest = () => {
 
 export let petalDance = () => {
    petalDanceFx();
-   petalupdateHPBar();
+   setTimeout(() => {
+      superEffective();
+      
+   }, 2000);
+   setTimeout(function() {
+      
+      laprasIsHit();
+    }, 2100);
+   setTimeout(() => {
+      petalupdateHPBar();
+      
+   }, 2500);
+   
+   
+   
    displayFightDesc2("Venusaur used Petal Dance!");
    let dmgPetal = Venusaur.attack*1.5
    console.log("Venusaur used petal dance!");
    Lapras.current_health = Lapras.current_health - dmgPetal;
    console.log("petal dance dealt " + dmgPetal + "dmg to Lapras. It's very effective!" ) 
-   fightDesc.innerHTML = "Venusaur used petal dance. \n Venusaur dealt " + dmgPetal + " dmg to Lapras. \n It's very effective!"
+   fightDesc.innerHTML = "Venusaur used petal dance. \n It's very effective!"
    console.log("Lapras health: " + Lapras.current_health)
   }
   
@@ -267,7 +346,7 @@ export let sleepPowder = () => {
      console.log(sleepChance);
      
      if (sleepChance > 0.25) {
-      fightDesc.innerHTML = "venusaur used sleep powder! \n Lapras fell asleep..";
+      fightDesc.innerHTML = "Venusaur used sleep powder! \n Lapras fell asleep..";
       
         console.log("Venusaur used sleep powder!");
         console.log("Lapras fell asleep.");
@@ -293,7 +372,19 @@ export let synthesis = () => {
   
 export let sludgeBomb = () => {
    sludgeBombFx()
-   sludgeupdateHPBar();
+   setTimeout(function() {
+      
+      hit();
+    }, 3000);
+    setTimeout(function() {
+      
+      laprasIsHit();
+    }, 3100);
+    setTimeout(function() {
+      
+      sludgeupdateHPBar();
+    }, 3500);
+   
    displayFightDesc2("Venusaur used Sludge Bomb!")
     let dmgSludge = Venusaur.attack*0.7
      console.log("Venusaur used sludge bomb!");
@@ -325,14 +416,82 @@ export let VenusaurAttack = () => {
 
 export let healthCheck = () => {
     let venuHealth = Venusaur.current_health;
-    let laprasHealth = Lapras.current_health;
+   //  let laprasHealth = Lapras.current_health;
     
-    if (venuHealth < 1 ) {
-       venuHealth = 0;
-       
+    if (venuHealth <= 0 ) {
+      console.log("Venusaur fainted....Lapras wins!");
+        
+        
+        setTimeout(function() {
+      
+            venusaurDeath();
+            faintFx ()
+            victoryFx()
+            fightDesc.innerHTML = "Venusaur fainted....Lapras wins!"
+            combatHUD.style.display ="none"
+          }, 1500);
+      
               
-    }else if (laprasHealth < 1) {
-       laprasHealth = 0;
-       
-     }
+       }
   }     
+
+
+  export let healthCheck2 = () => {
+  if (Lapras.current_health <= 0) {
+       
+   console.log("Lapras fainted....Venusaur wins! ");
+   fightDesc.innerHTML = "Lapras fainted... Venusaur wins!"
+   
+   setTimeout(() => {
+   laprasDeath();
+   faintFx ()
+   combatHUD.style.display ="none"
+
+   }, 1000)
+    
+  }
+
+
+  }
+
+
+  export let venuIsHit = () => {
+   setTimeout(() => {
+      venusaurSprite.style.display ='none';
+      
+   }, 50);
+   setTimeout(() => {
+      venusaurSprite.style.display ='block';
+      
+   }, 100);
+   setTimeout(() => {
+      venusaurSprite.style.display ='none';
+      
+   }, 150);
+   setTimeout(() => {
+      venusaurSprite.style.display ='block';
+      
+   }, 200);
+   
+  
+  }
+  export let laprasIsHit = () => {
+   setTimeout(() => {
+      laprasSprite.style.display ='none';
+      
+   }, 50);
+   setTimeout(() => {
+      laprasSprite.style.display ='block';
+      
+   }, 100);
+   setTimeout(() => {
+      laprasSprite.style.display ='none';
+      
+   }, 150);
+   setTimeout(() => {
+      laprasSprite.style.display ='block';
+      
+   }, 200);
+   
+  
+  }
