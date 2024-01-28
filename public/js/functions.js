@@ -1,6 +1,6 @@
 import { Lapras } from "./pokemon.js";
 import { Venusaur } from "./pokemon.js";
-import { selectConfuseRay, selectRest, selectSurf, selectIceBeam, battleText } from "./instances.js";
+import { selectConfuseRay, selectRest, selectSurf, surfAttack, selectIceBeam, battleText } from "./instances.js";
 import { nextButton, venusaurSprite, laprasSprite, laprasHealthBar, combatHUD } from "./instances.js";
 //text functions//
 export let fightDesc = document.querySelector('.fightDesc')
@@ -43,7 +43,7 @@ let currentIndex = 0;
             if(currentIndex == 1){
                setTimeout(() => {
                   laprasCry();
-               }, 500)
+               }, 100)
                
                laprasSprite.style.display = "block"
                laprasHealthBar.style.display = "block"
@@ -139,6 +139,10 @@ export function victoryFx () {
 export function faintFx () {
    let faintFx = new Audio("../public/assets/music/faint.mp3");
    faintFx.play();
+} 
+export function confuseFx () {
+   let confuseFx = new Audio("../public/assets/music/Confused.mp3");
+   confuseFx.play();
 } 
 
 
@@ -245,6 +249,8 @@ let battleStates = [];
 
 export let icebeam = () => {
    iceBeamFx();
+   combatHUD.style.display = "none";
+   
    setTimeout(function() {
       
       superEffective();
@@ -285,10 +291,15 @@ export let confuseRay = () => {
       //  console.log("Lapras used confuse ray!");
       //  console.log("Venusaur became confused!");
       confuseRayFx();
+      combatHUD.style.display = "none"
       displayFightDesc1("Lapras used confuse ray!")
       setTimeout(() => {
          displayFightDesc2("Venusaur became confused!")
       }, 2000);
+      setTimeout(() => {
+         confuseFx();
+      }, 2100);
+      
       
 
        return true;
@@ -296,6 +307,7 @@ export let confuseRay = () => {
     }else {
       //  console.log("Lapras used confuse ray! but it failed...");
        fightDesc.innerHTML = "Lapras used confuse ray! but it failed..."
+       combatHUD.style.display = "none"
       return false;
     }
  }
@@ -303,15 +315,35 @@ export let confuseRay = () => {
 
 export let surf = () => {
    surfFx();
+   combatHUD.style.display = "none"
+   setTimeout(function () {
+      surfAttack.style.opacity = "1";
+
+   }, 100)
+   surfAttack.classList.add('show');
+   surfAttack.classList.add('translate');
+   setTimeout(function () {
+      surfAttack.style.opacity = "0";
+
+   }, 900)
+   setTimeout(function () {
+      surfAttack.classList.remove("show")
+
+   }, 1300)
+   
    setTimeout(() => {
       notEffective();
    }, 2000);
+   setTimeout(() => {
+      surfAttack.classList.remove('translate');
+    }, 2000); 
    setTimeout(function() {
       
       venuIsHit();
     }, 2100);
    setTimeout(() => {
      surfupdateHPBar() ;
+     
    }, 2500);
    
    let dmgsurf = Lapras.attack*0.75 
@@ -330,10 +362,15 @@ export let surf = () => {
 
 export let rest = () => {
    restFx();
+   combatHUD.style.display = "none"
    setTimeout(() => {
       restupdateHPBar();
    }, 1500);
-   displayFightDesc1("Lapras used rest! A mimir.. \n Lapras rested to recover his health.")
+   displayFightDesc1("Lapras used rest! A mimir.. ")
+
+   setTimeout(() => {
+      displayFightDesc2("Lapras rested to recover his health.")
+   }, 1500);
    let hpRecovery = Lapras.max_health;
     console.log("Lapras used rest! Lapras fell asleep");
     Lapras.current_health = Lapras.max_health;
@@ -394,18 +431,23 @@ export let sleepPowder = () => {
   
  
 export let synthesis = () => {
-
-   displayFightDesc2("Venusaur used synthesis!")
-   recovery();
-   setTimeout(() => {
-      recoveryupdateHPBar();
-      
-   }, 2000);
-    let synthHpRecovery = Venusaur.max_health*0.5 
-     console.log("Venusaur used synthesis!");
-     Venusaur.current_health = Venusaur.current_health + synthHpRecovery
-     console.log("Venusaur recovered " + synthHpRecovery + " hp to Venusaur")
-     console.log("Venusaur hp : " + Venusaur.current_health);
+   if (Venusaur.current_health == 350) {
+      sludgeBomb();
+   }
+   else{
+      displayFightDesc2("Venusaur used synthesis!")
+      recovery();
+      setTimeout(() => {
+         recoveryupdateHPBar();
+         
+      }, 2000);
+       let synthHpRecovery = Venusaur.max_health*0.5 
+        console.log("Venusaur used synthesis!");
+        Venusaur.current_health = Venusaur.current_health + synthHpRecovery
+        console.log("Venusaur recovered " + synthHpRecovery + " hp to Venusaur")
+        console.log("Venusaur hp : " + Venusaur.current_health);
+   }
+    
   }
  
   
@@ -453,7 +495,7 @@ export let VenusaurAttack = () => {
 
 
 
-export let healthCheck = () => {
+export let healthCheck1 = () => {
     let venuHealth = Venusaur.current_health;
    //  let laprasHealth = Lapras.current_health;
     
@@ -468,7 +510,7 @@ export let healthCheck = () => {
             victoryFx()
             fightDesc.innerHTML = "Venusaur fainted....Lapras wins!"
             combatHUD.style.display ="none"
-          }, 1500);
+          }, 4000);
       
               
        }

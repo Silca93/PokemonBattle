@@ -1,4 +1,4 @@
-import { icebeam, synthesis, confuseRay, surf, rest, sludgeBomb, petalDance, sleepPowder, healthCheck, healthCheck2, venusaurDeath, laprasDeath } from "./functions.js";
+import { icebeam, synthesis, confuseRay, surf, rest, sludgeBomb, petalDance, sleepPowder, healthCheck1, healthCheck2, venusaurDeath, laprasDeath } from "./functions.js";
 import { Venusaur } from "./pokemon.js";
 import { Lapras } from "./pokemon.js";
 import { venusaurCry, laprasCry } from "./functions.js";
@@ -22,102 +22,91 @@ laprasHealthBar.style.display = "none"
 fightDesc.innerHTML = "A wild venusaur appeared!";
 
 
-
+healthCheck2();
 selectIceBeam.addEventListener("click", function() {
     icebeam();
     
-    healthCheck();
-    if (Venusaur.current_health <= 0){
-        
-       
-        
+    healthCheck1();
+               
         
 
-    }else if(Lapras.current_health > 0) {
+    if(Lapras.current_health > 0 && Venusaur.current_health > 0) {
         setTimeout(function() {
       
             VenusaurAttack();
-          }, 3500);
+          }, 4000);
+          setTimeout(function() {
+      
+            combatHUD.style.display = "flex";
+          }, 6500);
+          
     }
-    healthCheck();
-    // if (Lapras.current_health <= 0) {
-    //     console.log("Lapras fainted....Venusaur wins! ");
-    //     fightDesc.innerHTML = "Lapras fainted... Venusaur wins!"
-        
-    //     setTimeout(() => {
-    //     laprasDeath();
-    //     faintFx ()
-    //     combatHUD.style.display ="none"
-
-    //     })
-        
-        
-    // }
+    healthCheck2();
+   
 });
 
+healthCheck2();
 selectSurf.addEventListener("click", function() {
     surf();
-    healthCheck();
-    if (Venusaur.current_health <= 0){
-        setTimeout(function() {
-      
-            venusaurDeath();
-            faintFx ()
-            victoryFx()
-            fightDesc.innerHTML = "Venusaur fainted....Lapras wins!"
-            combatHUD.style.display ="none"
-          }, 1500);
-        console.log("Venusaur fainted....Lapras wins!");
-    }else if(Lapras.current_health > 0) {
+    healthCheck1();
+               
+        
+
+    if(Lapras.current_health > 0 && Venusaur.current_health > 0) {
         setTimeout(function() {
       
             VenusaurAttack();
-          }, 3500);
+          }, 4000);
+          setTimeout(function() {
+      
+            combatHUD.style.display = "flex";
+          }, 6500);
+
     }
-    healthCheck();
-    // if (Lapras.current_health <= 0) {
-    //     console.log("Lapras fainted....Venusaur wins! ");
-    //     fightDesc.innerHTML = "Lapras fainted... Venusaur wins!";
-    //     laprasDeath();
-    //     combatHUD.style.display ="none";
-    //     faintFx();
-    // }
+    healthCheck2();
+   
 });
 
+healthCheck2();
 selectRest.addEventListener("click", function() {
     rest();
-    healthCheck();
-    if (Venusaur.current_health <= 0){
-        console.log("Venusaur fainted....Lapras wins!");
-    }else if(Lapras.current_health > 0) {
+    healthCheck1();
+    
+        
+               
+
+    if(Lapras.current_health > 0 && Venusaur.current_health > 0) {
         setTimeout(function() {
       
             VenusaurAttack();
-          }, 3500);
+          }, 4000);
+          setTimeout(function() {
+      
+            combatHUD.style.display = "flex";
+          }, 6500);
     }
-    healthCheck();
+    healthCheck2();
     
 });
 
+
+healthCheck2();
 selectConfuseRay.addEventListener("click", function() {
     confuseRay();
-    healthCheck();
-    if (Venusaur.current_health <= 0){
-        console.log("Venusaur fainted....Lapras wins!");
-    }else if(Lapras.current_health > 0) {
+    healthCheck1();
+           
+
+    if(Lapras.current_health > 0 && Venusaur.current_health > 0) {
         setTimeout(function() {
       
             VenusaurAttack();
-          }, 3500);
+          }, 4000);
+          setTimeout(function() {
+      
+            combatHUD.style.display = "flex";
+          }, 6500);
     }
     healthCheck2();
-    if (Lapras.current_health <= 0) {
-        console.log("Lapras fainted....Venusaur wins! ");
-        fightDesc.innerHTML = "Lapras fainted... Venusaur wins!"
-        laprasDeath();
-        combatHUD.style.display ="none"
-        faintFx();
-    }
 });
     
      
