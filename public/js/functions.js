@@ -79,7 +79,7 @@ export function battleTheme () {
    theme.play();
 } 
 export function hit () {
-   let hit = new Audio("../public/assets/music/hit.mp3");
+   let hit = new Audio("./public/assets/music/hit.mp3");
    hit.play();
 } 
 
