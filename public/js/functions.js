@@ -194,6 +194,38 @@ export function petalupdateHPBar() {
 
 }
 
+
+
+//hp recovery functions //
+
+
+export function recoveryupdateHPBar() {
+   let venuhpBar = document.querySelector(".health");
+   let currentWidth = parseInt(window.getComputedStyle(venuhpBar).width);
+   let increaseAmount = 85;
+   let newWidth = currentWidth + increaseAmount;
+   
+   newWidth = Math.min(newWidth, 170);
+
+   venuhpBar.style.width = newWidth + 'px';
+
+}
+
+export function restupdateHPBar() {
+   let laprasHpBar = document.querySelector(".health2");
+   let currentWidth = parseInt(window.getComputedStyle(laprasHpBar).width);
+   let increaseAmount = 170;
+   let newWidth = currentWidth + increaseAmount;
+   
+   newWidth = Math.min(newWidth, 170);
+
+   laprasHpBar.style.width = newWidth + 'px';
+
+}
+
+
+
+
 export function venusaurDeath() {
    venusaurSprite.style.display ="none"
 }
@@ -298,6 +330,9 @@ export let surf = () => {
 
 export let rest = () => {
    restFx();
+   setTimeout(() => {
+      restupdateHPBar();
+   }, 1500);
    displayFightDesc1("Lapras used rest! A mimir.. \n Lapras rested to recover his health.")
    let hpRecovery = Lapras.max_health;
     console.log("Lapras used rest! Lapras fell asleep");
@@ -362,6 +397,10 @@ export let synthesis = () => {
 
    displayFightDesc2("Venusaur used synthesis!")
    recovery();
+   setTimeout(() => {
+      recoveryupdateHPBar();
+      
+   }, 2000);
     let synthHpRecovery = Venusaur.max_health*0.5 
      console.log("Venusaur used synthesis!");
      Venusaur.current_health = Venusaur.current_health + synthHpRecovery
