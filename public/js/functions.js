@@ -62,20 +62,20 @@ let currentIndex = 0;
 
 //audio functions//
 export function venusaurCry () {
-   let venusaurCry = new Audio("../public/assets/music/Venusaur.mp3");
+   let venusaurCry = new Audio("./public/assets/music/Venusaur.mp3");
    venusaurCry.play();
 } 
 export function laprasCry () {
-   let laprasCry = new Audio("../public/assets/music/Lapras.mp3");
+   let laprasCry = new Audio("./public/assets/music/Lapras.mp3");
    laprasCry.play();
 } 
 export function menuSound () {
-   let blip = new Audio("../public/assets/music/Abutton.mp3");
+   let blip = new Audio("./public/assets/music/Abutton.mp3");
    blip.play();
 } 
 
 export function battleTheme () {
-   let theme = new Audio("../public/assets/music/mainTheme.mp3");
+   let theme = new Audio("./public/assets/music/mainTheme.mp3");
    theme.play();
 } 
 export function hit () {
@@ -84,26 +84,26 @@ export function hit () {
 } 
 
 export function superEffective () {
-   let spEffective = new Audio("../public/assets/music/supereffective.mp3");
+   let spEffective = new Audio("./public/assets/music/supereffective.mp3");
    spEffective.play();
 } 
 
 export function notEffective () {
-   let notEffective = new Audio("../public/assets/music/noteffective.mp3");
+   let notEffective = new Audio("./public/assets/music/noteffective.mp3");
    notEffective.play();
 } 
 
 
 export function iceBeamFx () {
-   let iceBeamFx = new Audio("../public/assets/music/IceBeam.mp3");
+   let iceBeamFx = new Audio("./public/assets/music/IceBeam.mp3");
    iceBeamFx.play();
 } 
 export function surfFx () {
-   let surfFx = new Audio("../public/assets/music/Surf.mp3");
+   let surfFx = new Audio("./public/assets/music/Surf.mp3");
    surfFx.play();
 } 
 export function confuseRayFx () {
-   let confuseRayFx = new Audio("../public/assets/music/ConfuseRay.mp3");
+   let confuseRayFx = new Audio("./public/assets/music/ConfuseRay.mp3");
    confuseRayFx.play();
 } 
 export function restFx () {
@@ -420,18 +420,24 @@ export let petalDance = () => {
   
 export let sleepPowder = () => {
    sleepPowderFx()
-   displayFightDesc2("Venusaur used sleep powder!")
+   displayFightDesc1("Venusaur used sleep powder!")
      let sleepChance = Math.random();
      console.log(sleepChance);
      
      if (sleepChance > 0.25) {
-      fightDesc.innerHTML = "Venusaur used sleep powder! \n Lapras fell asleep..";
+     setInterval(() => {
+      displayFightDesc2("Lapras fell asleep..")
+      
+     }, 1000);
       
         console.log("Venusaur used sleep powder!");
         console.log("Lapras fell asleep.");
         return true;
      }else {
         console.log("Venusaur used sleep powder! but it failed...");
+        
+        
+
         return false;
      }
   }
