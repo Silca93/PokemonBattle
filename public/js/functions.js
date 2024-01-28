@@ -107,41 +107,41 @@ export function confuseRayFx () {
    confuseRayFx.play();
 } 
 export function restFx () {
-   let restFx = new Audio("../public/assets/music/Rest.mp3");
+   let restFx = new Audio("./public/assets/music/Rest.mp3");
    restFx.play();
 } 
 
 export function recovery () {
-   let recovery = new Audio("../public/assets/music/recovery.mp3");
+   let recovery = new Audio("./public/assets/music/recovery.mp3");
    recovery.play();
 } 
 export function sludgeBombFx () {
-   let sludgeBombFx = new Audio("../public/assets/music/SludgeBomb.mp3");
+   let sludgeBombFx = new Audio("./public/assets/music/SludgeBomb.mp3");
    sludgeBombFx.play();
 } 
 export function petalDanceFx () {
-   let petalDanceFx = new Audio("../public/assets/music/PetalDance.mp3");
+   let petalDanceFx = new Audio("./public/assets/music/PetalDance.mp3");
    petalDanceFx.play();
 } 
 
 export function sleepPowderFx () {
-   let sleepPowderFx = new Audio("../public/assets/music/SleepPowder.mp3");
+   let sleepPowderFx = new Audio("./public/assets/music/SleepPowder.mp3");
    sleepPowderFx.play();
 } 
 export function lowHpFx () {
-   let lowHpFx = new Audio("../public/assets/music/lowHp.mp3");
+   let lowHpFx = new Audio("./public/assets/music/lowHp.mp3");
    lowHpFx.play();
 } 
 export function victoryFx () {
-   let victoryFx = new Audio("../public/assets/music/victoryTheme.mp3");
+   let victoryFx = new Audio("./public/assets/music/victoryTheme.mp3");
    victoryFx.play();
 } 
 export function faintFx () {
-   let faintFx = new Audio("../public/assets/music/faint.mp3");
+   let faintFx = new Audio("./public/assets/music/faint.mp3");
    faintFx.play();
 } 
 export function confuseFx () {
-   let confuseFx = new Audio("../public/assets/music/Confused.mp3");
+   let confuseFx = new Audio("./public/assets/music/Confused.mp3");
    confuseFx.play();
 } 
 
