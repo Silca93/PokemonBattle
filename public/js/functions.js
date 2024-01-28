@@ -62,48 +62,48 @@ let currentIndex = 0;
 
 //audio functions//
 export function venusaurCry () {
-   let venusaurCry = new Audio("./public/assets/music/Venusaur.mp3");
+   let venusaurCry = new Audio("../public/assets/music/Venusaur.mp3");
    venusaurCry.play();
 } 
 export function laprasCry () {
-   let laprasCry = new Audio("./public/assets/music/Lapras.mp3");
+   let laprasCry = new Audio("../public/assets/music/Lapras.mp3");
    laprasCry.play();
 } 
 export function menuSound () {
-   let blip = new Audio("./public/assets/music/Abutton.mp3");
+   let blip = new Audio("../public/assets/music/Abutton.mp3");
    blip.play();
 } 
 
 export function battleTheme () {
-   let theme = new Audio("./public/assets/music/mainTheme.mp3");
+   let theme = new Audio("../public/assets/music/mainTheme.mp3");
    theme.play();
 } 
 export function hit () {
-   let hit = new Audio("./public/assets/music/hit.mp3");
+   let hit = new Audio("../public/assets/music/hit.mp3");
    hit.play();
 } 
 
 export function superEffective () {
-   let spEffective = new Audio("./public/assets/music/supereffective.mp3");
+   let spEffective = new Audio("../public/assets/music/supereffective.mp3");
    spEffective.play();
 } 
 
 export function notEffective () {
-   let notEffective = new Audio("./public/assets/music/noteffective.mp3");
+   let notEffective = new Audio("../public/assets/music/noteffective.mp3");
    notEffective.play();
 } 
 
 
 export function iceBeamFx () {
-   let iceBeamFx = new Audio("./public/assets/music/IceBeam.mp3");
+   let iceBeamFx = new Audio("../public/assets/music/IceBeam.mp3");
    iceBeamFx.play();
 } 
 export function surfFx () {
-   let surfFx = new Audio("./public/assets/music/Surf.mp3");
+   let surfFx = new Audio("../public/assets/music/Surf.mp3");
    surfFx.play();
 } 
 export function confuseRayFx () {
-   let confuseRayFx = new Audio("./public/assets/music/ConfuseRay.mp3");
+   let confuseRayFx = new Audio("../public/assets/music/ConfuseRay.mp3");
    confuseRayFx.play();
 } 
 export function restFx () {
@@ -318,8 +318,7 @@ export let confuseRay = () => {
  
 
 export let surf = () => {
-   if (Lapras.current_health > 0) {
-      surfFx();
+   surfFx();
    combatHUD.style.display = "none"
    setTimeout(function () {
       surfAttack.style.opacity = "1";
@@ -362,8 +361,6 @@ export let surf = () => {
    Venusaur.current_health = Venusaur.current_health - dmgsurf;
    console.log("surf dealt " + dmgsurf + " hp to Venusaur")
    console.log("Venusaur health: " + Venusaur.current_health)
-   }
-   
  }
 
 
@@ -420,24 +417,18 @@ export let petalDance = () => {
   
 export let sleepPowder = () => {
    sleepPowderFx()
-   displayFightDesc1("Venusaur used sleep powder!")
+   displayFightDesc2("Venusaur used sleep powder!")
      let sleepChance = Math.random();
      console.log(sleepChance);
      
      if (sleepChance > 0.25) {
-     setInterval(() => {
-      displayFightDesc2("Lapras fell asleep..")
-      
-     }, 1000);
+      fightDesc.innerHTML = "Venusaur used sleep powder! \n Lapras fell asleep..";
       
         console.log("Venusaur used sleep powder!");
         console.log("Lapras fell asleep.");
         return true;
      }else {
         console.log("Venusaur used sleep powder! but it failed...");
-        
-        
-
         return false;
      }
   }
