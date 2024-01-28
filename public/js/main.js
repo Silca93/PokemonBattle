@@ -1,10 +1,10 @@
 import { icebeam, synthesis, confuseRay, surf, rest, sludgeBomb, petalDance, sleepPowder, healthCheck1, healthCheck2, venusaurDeath, laprasDeath } from "./functions.js";
 import { Venusaur } from "./pokemon.js";
 import { Lapras } from "./pokemon.js";
-import { venusaurCry, laprasCry } from "./functions.js";
+import { venusaurCry, laprasCry, menuSound, battleTheme, hit, superEffective, notEffective, iceBeamFx, surfFx, confuseRayFx, restFx, recovery, sludgeBombFx, petalDanceFx, sleepPowderFx, lowHpFx, victoryFx, faintFx, confuseFx } from "./functions.js";
 import { selectConfuseRay, selectSurf, selectRest, selectIceBeam, laprasHealthBar, laprasSprite } from "./instances.js";
 import { nextButton, battleText, combatHUD } from "./instances.js";
-import { menuSound, battleTheme,lowHpFx, victoryFx, faintFx, hit } from "./functions.js";
+// import {  battleTheme,lowHpFx, victoryFx, faintFx, hit } from "./functions.js";
 import { displayFightDesc1,displayFightDesc2,  fightDesc } from "./functions.js";
 import { VenusaurAttack, iceupdateHPBar, surfupdateHPBar} from "./functions.js";
 const hpBar = document.querySelector('.healthBar');

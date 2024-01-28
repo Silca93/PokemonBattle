@@ -248,7 +248,8 @@ let battleStates = [];
    
 
 export let icebeam = () => {
-   iceBeamFx();
+   if (Lapras.current_health > 0) {
+      iceBeamFx();
    combatHUD.style.display = "none";
    
    setTimeout(function() {
@@ -279,6 +280,9 @@ export let icebeam = () => {
    
    
    console.log("Venusaur health: " + Venusaur.current_health);
+
+   }
+   
  }
  
  
@@ -314,7 +318,8 @@ export let confuseRay = () => {
  
 
 export let surf = () => {
-   surfFx();
+   if (Lapras.current_health > 0) {
+      surfFx();
    combatHUD.style.display = "none"
    setTimeout(function () {
       surfAttack.style.opacity = "1";
@@ -357,6 +362,8 @@ export let surf = () => {
    Venusaur.current_health = Venusaur.current_health - dmgsurf;
    console.log("surf dealt " + dmgsurf + " hp to Venusaur")
    console.log("Venusaur health: " + Venusaur.current_health)
+   }
+   
  }
 
 

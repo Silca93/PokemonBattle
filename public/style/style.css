@@ -9,7 +9,7 @@ body {
   padding: 0;
   
   width: 100dvw;
-  overflow: hidden;
+  overflow-y: hidden;
   font-family: sans-serif;
   background-image: url(../assets/image/Wiki-background.webp);
   z-index: 0;
@@ -17,6 +17,32 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+.selectLeft {
+  width: 50%;
+  height: 100%;
+  background-image: url(../assets/image/select_lapras.gif);
+  background-size: 150%;
+  margin-right: 200px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.selectRight {
+  width: 50%;
+  height: 100%;
+  background-image: url(../assets/select_pokemon-venusaur.gif);
+  background-repeat: no-repeat;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 
 /* Venussaur healthbar css*/
 .venusaurHealthBar{
