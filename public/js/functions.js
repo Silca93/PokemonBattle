@@ -43,6 +43,7 @@ let currentIndex = 0;
             if(currentIndex == 1){
                setTimeout(() => {
                   laprasCry();
+                  // battleTheme();
                }, 100)
                
                laprasSprite.style.display = "block"
@@ -77,6 +78,10 @@ export function menuSound () {
 export function battleTheme () {
    let theme = new Audio("../public/assets/music/mainTheme.mp3");
    theme.play();
+} 
+export function battleThemestop () {
+   let theme = new Audio("../public/assets/music/mainTheme.mp3");
+   theme.stop();
 } 
 export function hit () {
    let hit = new Audio("../public/assets/music/hit.mp3");
@@ -131,6 +136,10 @@ export function sleepPowderFx () {
 export function lowHpFx () {
    let lowHpFx = new Audio("./public/assets/music/lowHp.mp3");
    lowHpFx.play();
+} 
+export function lowHpFxstop () {
+   let lowHpFx = new Audio("./public/assets/music/lowHp.mp3");
+   lowHpFx.stop();
 } 
 export function victoryFx () {
    let victoryFx = new Audio("./public/assets/music/victoryTheme.mp3");
@@ -511,6 +520,7 @@ export let healthCheck1 = () => {
       
             venusaurDeath();
             faintFx ()
+            // battleThemestop();
             victoryFx()
             fightDesc.innerHTML = "Venusaur fainted....Lapras wins!"
             combatHUD.style.display ="none"
@@ -529,6 +539,7 @@ export let healthCheck1 = () => {
    
    setTimeout(() => {
    laprasDeath();
+   // battleThemestop();
    faintFx ()
    combatHUD.style.display ="none"
 

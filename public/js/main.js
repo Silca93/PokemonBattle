@@ -13,7 +13,7 @@ console.log(hpBar);
 
 console.log("Venusaur's health : " + Venusaur.max_health);
 console.log("Lapras's health : " + Lapras.max_health);
-// battleTheme();
+
 // venusaurCry() ;
 
 combatHUD.style.display ="none"
