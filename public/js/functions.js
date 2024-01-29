@@ -63,94 +63,94 @@ let currentIndex = 0;
 
 //audio functions//
 export function venusaurCry () {
-   let venusaurCry = new Audio("../public/assets/music/Venusaur.mp3");
+   let venusaurCry = new Audio("./../public/assets/music/Venusaur.mp3");
    venusaurCry.play();
 } 
 export function laprasCry () {
-   let laprasCry = new Audio("../public/assets/music/Lapras.mp3");
+   let laprasCry = new Audio("./../public/assets/music/Lapras.mp3");
    laprasCry.play();
 } 
 export function menuSound () {
-   let blip = new Audio("../public/assets/music/Abutton.mp3");
+   let blip = new Audio("./../public/assets/music/Abutton.mp3");
    blip.play();
 } 
 
 export function battleTheme () {
-   let theme = new Audio("../public/assets/music/mainTheme.mp3");
+   let theme = new Audio("./../public/assets/music/mainTheme.mp3");
    theme.play();
 } 
 export function battleThemestop () {
-   let theme = new Audio("../public/assets/music/mainTheme.mp3");
+   let theme = new Audio("./../public/assets/music/mainTheme.mp3");
    theme.stop();
 } 
 export function hit () {
-   let hit = new Audio("../public/assets/music/hit.mp3");
+   let hit = new Audio("./../public/assets/music/hit.mp3");
    hit.play();
 } 
 
 export function superEffective () {
-   let spEffective = new Audio("../public/assets/music/supereffective.mp3");
+   let spEffective = new Audio("./../public/assets/music/supereffective.mp3");
    spEffective.play();
 } 
 
 export function notEffective () {
-   let notEffective = new Audio("../public/assets/music/noteffective.mp3");
+   let notEffective = new Audio("./../public/assets/music/noteffective.mp3");
    notEffective.play();
 } 
 
 
 export function iceBeamFx () {
-   let iceBeamFx = new Audio("../public/assets/music/IceBeam.mp3");
+   let iceBeamFx = new Audio("./../public/assets/music/IceBeam.mp3");
    iceBeamFx.play();
 } 
 export function surfFx () {
-   let surfFx = new Audio("../public/assets/music/Surf.mp3");
+   let surfFx = new Audio("./../public/assets/music/Surf.mp3");
    surfFx.play();
 } 
 export function confuseRayFx () {
-   let confuseRayFx = new Audio("../public/assets/music/ConfuseRay.mp3");
+   let confuseRayFx = new Audio("./../public/assets/music/ConfuseRay.mp3");
    confuseRayFx.play();
 } 
 export function restFx () {
-   let restFx = new Audio("./public/assets/music/Rest.mp3");
+   let restFx = new Audio("./../public/assets/music/Rest.mp3");
    restFx.play();
 } 
 
 export function recovery () {
-   let recovery = new Audio("./public/assets/music/recovery.mp3");
+   let recovery = new Audio("./../public/assets/music/recovery.mp3");
    recovery.play();
 } 
 export function sludgeBombFx () {
-   let sludgeBombFx = new Audio("./public/assets/music/SludgeBomb.mp3");
+   let sludgeBombFx = new Audio("./../public/assets/music/SludgeBomb.mp3");
    sludgeBombFx.play();
 } 
 export function petalDanceFx () {
-   let petalDanceFx = new Audio("./public/assets/music/PetalDance.mp3");
+   let petalDanceFx = new Audio("./../public/assets/music/PetalDance.mp3");
    petalDanceFx.play();
 } 
 
 export function sleepPowderFx () {
-   let sleepPowderFx = new Audio("./public/assets/music/SleepPowder.mp3");
+   let sleepPowderFx = new Audio("./../public/assets/music/SleepPowder.mp3");
    sleepPowderFx.play();
 } 
 export function lowHpFx () {
-   let lowHpFx = new Audio("./public/assets/music/lowHp.mp3");
+   let lowHpFx = new Audio("./../public/assets/music/lowHp.mp3");
    lowHpFx.play();
 } 
 export function lowHpFxstop () {
-   let lowHpFx = new Audio("./public/assets/music/lowHp.mp3");
+   let lowHpFx = new Audio("./../public/assets/music/lowHp.mp3");
    lowHpFx.stop();
 } 
 export function victoryFx () {
-   let victoryFx = new Audio("./public/assets/music/victoryTheme.mp3");
+   let victoryFx = new Audio("./../public/assets/music/victoryTheme.mp3");
    victoryFx.play();
 } 
 export function faintFx () {
-   let faintFx = new Audio("./public/assets/music/faint.mp3");
+   let faintFx = new Audio("./../public/assets/music/faint.mp3");
    faintFx.play();
 } 
 export function confuseFx () {
-   let confuseFx = new Audio("./public/assets/music/Confused.mp3");
+   let confuseFx = new Audio("./../public/assets/music/Confused.mp3");
    confuseFx.play();
 } 
 

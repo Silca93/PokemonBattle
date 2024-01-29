@@ -24,12 +24,16 @@ fightDesc.innerHTML = "A wild venusaur appeared!";
 
 healthCheck2();
 selectIceBeam.addEventListener("click", function() {
+   if (Lapras.current_health > 0) {
     icebeam();
     
     healthCheck1();
                
         
+   }else{
+    laprasDeath();
 
+   }
     if(Lapras.current_health > 0 && Venusaur.current_health > 0) {
         setTimeout(function() {
       
@@ -47,11 +51,16 @@ selectIceBeam.addEventListener("click", function() {
 
 healthCheck2();
 selectSurf.addEventListener("click", function() {
+  if (Lapras.current_health > 0) {
     surf();
+    
     healthCheck1();
                
         
+   }else{
+    laprasDeath();
 
+   }
     if(Lapras.current_health > 0 && Venusaur.current_health > 0) {
         setTimeout(function() {
       
@@ -69,12 +78,16 @@ selectSurf.addEventListener("click", function() {
 
 healthCheck2();
 selectRest.addEventListener("click", function() {
+  if (Lapras.current_health > 0) {
     rest();
-    healthCheck1();
     
-        
+    healthCheck1();
                
+        
+   }else{
+    laprasDeath();
 
+   }
     if(Lapras.current_health > 0 && Venusaur.current_health > 0) {
         setTimeout(function() {
       
@@ -92,10 +105,16 @@ selectRest.addEventListener("click", function() {
 
 healthCheck2();
 selectConfuseRay.addEventListener("click", function() {
+  if (Lapras.current_health > 0) {
     confuseRay();
+    
     healthCheck1();
-           
+               
+        
+   }else{
+    laprasDeath();
 
+   }
     if(Lapras.current_health > 0 && Venusaur.current_health > 0) {
         setTimeout(function() {
       
