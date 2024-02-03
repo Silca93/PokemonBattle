@@ -156,7 +156,7 @@ export function confuseFx () {
 
 
  
-//Hp bar functionality//
+//Hp bar  damage functions//
 
 
 
@@ -183,6 +183,21 @@ export function surfupdateHPBar() {
    venuhpBar.style.width = newWidth + 'px';
 
 }
+
+
+export function confusionDamage () {
+   let venuhpBar = document.querySelector(".health");
+   let currentWidth = parseInt(window.getComputedStyle(venuhpBar).width);
+   let decreaseAmount = 17;
+   let newWidth = currentWidth - decreaseAmount;
+
+   newWidth = Math.max(newWidth, 0);
+   venuhpBar.style.width = newWidth + 'px';
+
+}
+
+
+
 export function sludgeupdateHPBar() {
    let laprashpBar = document.querySelector(".health2");
    let currentWidth = parseInt(window.getComputedStyle(laprashpBar).width);
@@ -209,7 +224,9 @@ export function petalupdateHPBar() {
 
 
 
-//hp recovery functions //
+
+
+//hp bar recovery functions //
 
 
 export function recoveryupdateHPBar() {
@@ -237,7 +254,7 @@ export function restupdateHPBar() {
 }
 
 
-
+//Death functions//
 
 export function venusaurDeath() {
    venusaurSprite.style.display ="none"
@@ -308,10 +325,44 @@ export let confuseRay = () => {
       displayFightDesc1("Lapras used confuse ray!")
       setTimeout(() => {
          displayFightDesc2("Venusaur became confused!")
+         Venusaur.confused = true;
+         console.log("venusaur confusion status: " + Venusaur.confused);
+         
       }, 2000);
       setTimeout(() => {
          confuseFx();
       }, 2100);
+      if (Venusaur.confused = true) {
+         console.log("venusaur confusion status: " + Venusaur.confused);
+         
+         let confusedMoveChance = Math.random();
+         console.log(confusedMoveChance);
+         // if (confusedMoveChance < 0.33) {
+         //    setTimeout(() => {
+         //       displayFightDesc1("Venusaur hurt itself in it's confusion!")
+         //       console.log("Venusaur hurt itself in it's confusion!");
+               
+         //    }, 4000);
+         //    setTimeout(function() {
+
+         //       hit();
+         //       venuIsHit();
+         //     }, 4200);
+         //     setTimeout(function() {
+               
+         //       confusionDamage();
+         //     }, 4400);
+         //     setTimeout(() => {
+         //       combatHUD.style.display = "flex"
+               
+         //     }, 4800);
+               
+         // }
+            
+         
+
+         
+      }
       
       
 
@@ -321,7 +372,8 @@ export let confuseRay = () => {
       //  console.log("Lapras used confuse ray! but it failed...");
        fightDesc.innerHTML = "Lapras used confuse ray! but it failed..."
        combatHUD.style.display = "none"
-      return false;
+       return false;
+      
     }
  }
  
@@ -380,7 +432,7 @@ export let rest = () => {
       restupdateHPBar();
    }, 1500);
    displayFightDesc1("Lapras used rest! A mimir.. ")
-
+   Lapras.asleep == true;
    setTimeout(() => {
       displayFightDesc2("Lapras rested to recover his health.")
    }, 1500);
@@ -428,7 +480,7 @@ export let sleepPowder = () => {
    sleepPowderFx()
    displayFightDesc2("Venusaur used sleep powder!")
      let sleepChance = Math.random();
-     console.log(sleepChance);
+   //   console.log(sleepChance);
      
      if (sleepChance > 0.25) {
       fightDesc.innerHTML = "Venusaur used sleep powder! \n Lapras fell asleep..";
@@ -493,7 +545,7 @@ export let sludgeBomb = () => {
 
 export let VenusaurAttack = () => {
    let VenusaurRandom = Math.floor(Math.random()*4);
-   console.log(VenusaurRandom);
+   // console.log(VenusaurRandom);
    if (VenusaurRandom == 0){
       petalDance();
    }else if (VenusaurRandom == 1){
@@ -505,6 +557,97 @@ export let VenusaurAttack = () => {
    }
 } 
 
+
+
+
+
+
+export let areYouConfused = () => {
+  
+         let oddsOfConfusionSnapOut = Math.random();
+         if (oddsOfConfusionSnapOut > 0.33) {
+            
+            setTimeout(() => {
+               displayFightDesc1("Venusaur snapped out of confusion!")
+               
+            }, 4000);
+            setTimeout(() => {
+               Venusaur.confused = false;
+               console.log("venusaur confusion status: " + Venusaur.confused);
+               
+            }, 4200);
+           
+            setTimeout(function() {
+            
+               VenusaurAttack();
+            }, 5000);
+         }else {
+         let confusedMoveChance = Math.random();
+         console.log(confusedMoveChance);
+         if (confusedMoveChance < 0.33) {
+            console.log("venusaur confusion status: " + Venusaur.confused);
+            setTimeout(() => {
+               displayFightDesc1("Venusaur is confused... It hurt itself in it's confusion!")
+               
+            }, 4000);
+            setTimeout(function() {
+
+               hit();
+               venuIsHit();
+            }, 4200);
+            setTimeout(function() {
+               
+               confusionDamage();
+            }, 4400);
+            // setTimeout(() => {
+            //    combatHUD.style.display = "flex"
+               
+            // }, 4800);
+
+         }
+
+
+            
+         }
+   }
+   
+
+// if (Venusaur.confused = true) {
+//    console.log(Venusaur.confused);
+   
+//    let confusedMoveChance = Math.random();
+//    console.log(confusedMoveChance);
+//    if (confusedMoveChance < 0.33) {
+//       setTimeout(() => {
+//          displayFightDesc1("Venusaur hurt itself in it's confusion!")
+//          console.log("Venusaur hurt itself in it's confusion!");
+         
+//       }, 4000);
+      // setTimeout(function() {
+
+      //    hit();
+      //    venuIsHit();
+      //  }, 4200);
+      //  setTimeout(function() {
+         
+      //    confusionDamage();
+      //  }, 4400);
+      //  setTimeout(() => {
+      //    combatHUD.style.display = "flex"
+         
+      //  }, 4800);
+         
+
+//    }else {
+//       setTimeout(() => {
+//          VenusaurAttack();
+         
+//       }, 4300);
+      
+//    }
+
+   
+// }
 
 
 

@@ -1,4 +1,4 @@
-import { icebeam, synthesis, confuseRay, surf, rest, sludgeBomb, petalDance, sleepPowder, healthCheck1, healthCheck2, venusaurDeath, laprasDeath } from "./functions.js";
+import { icebeam, synthesis, confuseRay, surf, rest, sludgeBomb, petalDance, sleepPowder, healthCheck1, healthCheck2, venusaurDeath, laprasDeath, areYouConfused } from "./functions.js";
 import { Venusaur } from "./pokemon.js";
 import { Lapras } from "./pokemon.js";
 import { venusaurCry, laprasCry, menuSound, battleTheme, hit, superEffective, notEffective, iceBeamFx, surfFx, confuseRayFx, restFx, recovery, sludgeBombFx, petalDanceFx, sleepPowderFx, lowHpFx, victoryFx, faintFx, confuseFx } from "./functions.js";
@@ -61,17 +61,32 @@ selectSurf.addEventListener("click", function() {
     laprasDeath();
 
    }
-    if(Lapras.current_health > 0 && Venusaur.current_health > 0) {
-        setTimeout(function() {
+   if(Lapras.current_health > 0 && Venusaur.current_health > 0) {
+    if (Venusaur.confused == false) {
+      console.log("venusaur confusion status: " + Venusaur.confused);
+      setTimeout(() => {
+        VenusaurAttack();
+        
+        
+      }, 3000);
+      setTimeout(() => {
+        
+      }, 3200);
+      setTimeout(function() {
+  
+        combatHUD.style.display = "flex";
+      }, 6500);
+    }else {
+      areYouConfused();
+      setTimeout(function() {
+  
+        combatHUD.style.display = "flex";
+      }, 6500);
       
-            VenusaurAttack();
-          }, 4000);
-          setTimeout(function() {
-      
-            combatHUD.style.display = "flex";
-          }, 6500);
-
     }
+  
+      
+}
     healthCheck2();
    
 });
@@ -88,16 +103,28 @@ selectRest.addEventListener("click", function() {
     laprasDeath();
 
    }
-    if(Lapras.current_health > 0 && Venusaur.current_health > 0) {
-        setTimeout(function() {
+   if(Lapras.current_health > 0 && Venusaur.current_health > 0) {
+    if (Venusaur.confused == false) {
+      console.log("venusaur confusion status: " + Venusaur.confused);
+      setTimeout(() => {
+        VenusaurAttack();
+        
+      }, 4100);
+      setTimeout(function() {
+  
+        combatHUD.style.display = "flex";
+      }, 6500);
+    }else {
+      areYouConfused();
+      setTimeout(function() {
+  
+        combatHUD.style.display = "flex";
+      }, 6500);
       
-            VenusaurAttack();
-          }, 4000);
-          setTimeout(function() {
-      
-            combatHUD.style.display = "flex";
-          }, 6500);
     }
+  
+      
+}
     healthCheck2();
     
 });
@@ -116,14 +143,26 @@ selectConfuseRay.addEventListener("click", function() {
 
    }
     if(Lapras.current_health > 0 && Venusaur.current_health > 0) {
-        setTimeout(function() {
-      
+        if (Venusaur.confused == false) {
+          console.log("venusaur confusion status: " + Venusaur.confused);
+          setTimeout(() => {
             VenusaurAttack();
-          }, 4000);
+            
+          }, 4100);
           setTimeout(function() {
       
             combatHUD.style.display = "flex";
           }, 6500);
+        }else {
+          areYouConfused();
+          setTimeout(function() {
+      
+            combatHUD.style.display = "flex";
+          }, 6500);
+          
+        }
+      
+          
     }
     healthCheck2();
 });
