@@ -94,7 +94,7 @@ export function superEffective () {
 } 
 
 export function notEffective () {
-   let notEffective = new Audio("./../assets/music/noteffective.mp3");
+   let notEffective = new Audio("./public/assets/music/noteffective.mp3");
    notEffective.play();
 } 
 
