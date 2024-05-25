@@ -318,8 +318,7 @@ export let confuseRay = () => {
     let confuseChance = Math.random();
     
     if (confuseChance > 0.35) {
-      //  console.log("Lapras used confuse ray!");
-      //  console.log("Venusaur became confused!");
+      
       confuseRayFx();
       combatHUD.style.display = "none"
       displayFightDesc1("Lapras used confuse ray!")
@@ -426,13 +425,16 @@ export let surf = () => {
 
 
 export let rest = () => {
+   Lapras.asleep = true;
+   console.log("Lapras is asleep: " + Lapras.asleep);
    restFx();
+   sleep();
    combatHUD.style.display = "none"
+   
    setTimeout(() => {
       restupdateHPBar();
    }, 1500);
-   displayFightDesc1("Lapras used rest! A mimir.. ")
-   Lapras.asleep == true;
+   displayFightDesc1("Lapras used rest! ")
    setTimeout(() => {
       displayFightDesc2("Lapras rested to recover his health.")
    }, 1500);
@@ -444,6 +446,29 @@ export let rest = () => {
     
  }
 
+ export let sleep = () => {
+   let sleepEffect = document.createElement("div");
+   sleepEffect.classList.add("sleepEffect");
+ 
+   // Add two "Z" elements
+   for (let i = 0; i < 2; i++) {
+     let z = document.createElement("span");
+     z.classList.add("z");
+     z.textContent = "..Z";
+     sleepEffect.appendChild(z);
+     z.style.animationDelay = `${i * 0.6}s`;
+
+   
+   }
+ 
+   // Append the sleep effect to the body or desired container
+   document.body.appendChild(sleepEffect);
+ 
+   // Remove the sleep effect after 1 second
+   setTimeout(() => {
+     sleepEffect.remove();
+   }, 1000);
+ };
 
 
 // venusaur moves //
@@ -478,6 +503,7 @@ export let petalDance = () => {
   
 export let sleepPowder = () => {
    sleepPowderFx()
+   Lapras.asleep = true;
    displayFightDesc2("Venusaur used sleep powder!")
      let sleepChance = Math.random();
    //   console.log(sleepChance);
@@ -486,7 +512,7 @@ export let sleepPowder = () => {
       fightDesc.innerHTML = "Venusaur used sleep powder! \n Lapras fell asleep..";
       
         console.log("Venusaur used sleep powder!");
-        console.log("Lapras fell asleep.");
+        console.log("Lapras is asleep.: " + Lapras.asleep);
         return true;
      }else {
         console.log("Venusaur used sleep powder! but it failed...");
@@ -546,52 +572,81 @@ export let sludgeBomb = () => {
 export let VenusaurAttack = () => {
    let VenusaurRandom = Math.floor(Math.random()*4);
    // console.log(VenusaurRandom);
-   if (VenusaurRandom == 0){
+   if (VenusaurRandom == 0 && Venusaur.current_health > 0){
       petalDance();
-   }else if (VenusaurRandom == 1){
+   }else if (VenusaurRandom == 1  && Venusaur.current_health > 0){
       synthesis();
-   }else if (VenusaurRandom == 2){
+   }else if (VenusaurRandom == 2  && Venusaur.current_health > 0){
       sleepPowder();
-   }else if (VenusaurRandom == 3) {
+   }else if (VenusaurRandom == 3  && Venusaur.current_health > 0) {
       sludgeBomb();
    }
 } 
 
+export let areYouAsleep = () => {
+   let wakeUpOdds = Math.random();
+   if (wakeUpOdds < 0.5) {
+      Lapras.asleep = false;
+      setTimeout(() => {
+         displayFightDesc1("Lapras woke up!")
+
+         console.log(wakeUpOdds);
+         console.log('Lapras is asleep: ' + Lapras.asleep);
+      }, 500)
+     
+   }else {
+      Lapras.asleep = true;
+      setTimeout(()=> {
+         displayFightDesc1("Lapras is fast asleep...");
+         console.log(wakeUpOdds);
+         console.log("Lapras is asleep:" + Lapras.asleep);
+         sleep();
+         restFx();
+      }, 500)
+   }
+
+}
 
 
+let confusionDuration = [1,2,3,4]
 
-
+// let i = 0;
 
 export let areYouConfused = () => {
-  
-         let oddsOfConfusionSnapOut = Math.random();
-         if (oddsOfConfusionSnapOut > 0.33) {
+//    while (confusionDuration < 4) {
+
+
+      let oddsOfConfusionSnapOut = Math.random();
+      if (oddsOfConfusionSnapOut < 0.40) {
+         
+         setTimeout(() => {
+            displayFightDesc1("Venusaur snapped out of confusion!")
             
-            setTimeout(() => {
-               displayFightDesc1("Venusaur snapped out of confusion!")
-               
-            }, 4000);
-            setTimeout(() => {
-               Venusaur.confused = false;
-               console.log("venusaur confusion status: " + Venusaur.confused);
-               
-            }, 4200);
-           
-            setTimeout(function() {
+         }, 4000);
+         setTimeout(() => {
+            Venusaur.confused = false;
+            console.log("venusaur confusion status: " + Venusaur.confused);
             
+         }, 4200);
+   
+         setTimeout(function() {
+            if (Venusaur.current_health > 0){
+
                VenusaurAttack();
-            }, 5000);
-         }else {
-         let confusedMoveChance = Math.random();
-         console.log(confusedMoveChance);
-         if (confusedMoveChance < 0.33) {
+               healthCheck2()
+            }
+         }, 5000);
+      }else {
+      let confusedMoveChance = Math.random();
+      console.log(confusedMoveChance);
+         if (confusedMoveChance < 0.5) {
             console.log("venusaur confusion status: " + Venusaur.confused);
             setTimeout(() => {
                displayFightDesc1("Venusaur is confused... It hurt itself in it's confusion!")
                
             }, 4000);
             setTimeout(function() {
-
+   
                hit();
                venuIsHit();
             }, 4200);
@@ -599,55 +654,20 @@ export let areYouConfused = () => {
                
                confusionDamage();
             }, 4400);
-            // setTimeout(() => {
-            //    combatHUD.style.display = "flex"
-               
-            // }, 4800);
-
+         
+         }else {
+            setTimeout(() => {
+               console.log('venusaur' + Venusaur.confused);
+               console.log('Venusaur managed to attack through confusion');
+               VenusaurAttack();
+            }, 4000);
+         
          }
-
-
-            
-         }
+   
+         
+      }
    }
-   
-
-// if (Venusaur.confused = true) {
-//    console.log(Venusaur.confused);
-   
-//    let confusedMoveChance = Math.random();
-//    console.log(confusedMoveChance);
-//    if (confusedMoveChance < 0.33) {
-//       setTimeout(() => {
-//          displayFightDesc1("Venusaur hurt itself in it's confusion!")
-//          console.log("Venusaur hurt itself in it's confusion!");
-         
-//       }, 4000);
-      // setTimeout(function() {
-
-      //    hit();
-      //    venuIsHit();
-      //  }, 4200);
-      //  setTimeout(function() {
-         
-      //    confusionDamage();
-      //  }, 4400);
-      //  setTimeout(() => {
-      //    combatHUD.style.display = "flex"
-         
-      //  }, 4800);
-         
-
-//    }else {
-//       setTimeout(() => {
-//          VenusaurAttack();
-         
-//       }, 4300);
-      
-//    }
-
-   
-// }
+ 
 
 
 
@@ -671,7 +691,25 @@ export let healthCheck1 = () => {
       
               
        }
-  }     
+  }  
+  
+  export let VenuhealthCheck = () => {
+   let venuHealth = Venusaur.current_health;
+  //  let laprasHealth = Lapras.current_health;
+   
+   if (venuHealth <= 0 ) {
+   console.log("Venusaur fainted....Lapras wins!");
+
+         venusaurDeath();
+         faintFx ()
+          // battleThemestop();
+         victoryFx()
+         fightDesc.innerHTML = "Venusaur fainted....Lapras wins!"
+         combatHUD.style.display ="none"
+        
+
+      }
+}       
 
 
   export let healthCheck2 = () => {

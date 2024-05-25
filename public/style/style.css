@@ -79,7 +79,7 @@ body {
   color: blue;
   font-family: 'Press Start 2P', system-ui;
   position: absolute;
-  
+  font-style:italic;
   left: 133px;
   bottom: 4px;
   
@@ -289,7 +289,7 @@ body {
   transition-duration: 1.7s;
   position: absolute;
   left: 250px;
-  top: 0px;
+  top: -3rem;
   
 
 }
@@ -301,6 +301,49 @@ body {
 
 .surfAnimation.translate {
   transform: translate(450px);
+}
+
+
+
+
+
+@keyframes sleepAnim {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100px); /* Adjust upward movement distance */
+  }
+}
+
+
+
+.sleepEffect {
+  position: absolute;
+  bottom: 440px; /* Adjust position as needed */
+  left: 43rem; /* Center horizontally */
+  transform: translateX(-50%); /* Center horizontally */
+  width: 50px; /* Adjust width as needed */
+  height: 50px; /* Adjust height as needed */
+  overflow: hidden; /* Clip overflowing content */
+}
+
+.sleepEffect .z {
+  position: absolute;
+  color: whitesmoke; /* Adjust color as needed */
+  font-size: 30px; /* Adjust font size as needed */
+  font-family: sans-serif; /* Adjust font family as needed */
+  animation: sleepAnim 2s ease-in infinite;
+}
+
+
+@keyframes sleepAnim {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(-100px); /* Adjust upward movement distance */
+  }
 }
 
 
