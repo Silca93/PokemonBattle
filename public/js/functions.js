@@ -89,12 +89,12 @@ export function menuSound () {
 } 
 
 export function battleTheme () {
-   let theme = new Audio("./public/assets/music/mainTheme2.mp3");
+   let theme = new Audio("./public/assets/music/mainTheme3.mp3");
    theme.play();
    window.battleThemeAudio = theme;
 } 
 export function battleThemestop () {
-   let theme = new Audio("./public/assets/music/mainTheme2.mp3");
+   let theme = new Audio("./public/assets/music/mainTheme3.mp3");
    if (window.battleThemeAudio) { // Check if audio element is stored
       window.battleThemeAudio.pause(); // Use pause() to stop playback
       window.battleThemeAudio.currentTime = 0; // Reset playback position (optional)
