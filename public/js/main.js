@@ -14,7 +14,7 @@ console.log(hpBar);
 console.log("Venusaur's health : " + Venusaur.max_health);
 console.log("Lapras's health : " + Lapras.max_health);
 
-// venusaurCry() ;
+
 
 combatHUD.style.display ="none"
 laprasSprite.style.display = "none"
@@ -38,7 +38,7 @@ selectIceBeam.addEventListener("click", function() {
         icebeam();
         healthCheck1();
       }else {
-        laprasDeath()
+        // laprasDeath()
       }
     }, 1000);
     
@@ -52,6 +52,7 @@ selectIceBeam.addEventListener("click", function() {
           if (Venusaur.current_health > 0 && Venusaur.confused == false){
 
             VenusaurAttack();
+            healthCheck2()
           }
           
             }, 4100);
@@ -93,7 +94,7 @@ selectSurf.addEventListener("click", function() {
         surf();
         healthCheck1();
       }else {
-        laprasDeath()
+        // laprasDeath()
       }
     }, 1000);
     
@@ -104,6 +105,7 @@ selectSurf.addEventListener("click", function() {
       console.log("venusaur confusion status: " + Venusaur.confused);
       setTimeout(() => {
         VenusaurAttack();
+        healthCheck2()
         
       }, 4100);
       setTimeout(function() {
@@ -171,15 +173,23 @@ selectRest.addEventListener("click", function() {
 
 
 selectConfuseRay.addEventListener("click", function() {
-  
-  if (Lapras.current_health > 0) {
+  menuSound()
+  if (Lapras.current_health > 0 && Lapras.asleep == false) {
     confuseRay();
     
     healthCheck1();
 
         
-  }else{
-    laprasDeath();
+  }else {
+    areYouAsleep();
+    setTimeout(() => {
+    if (Lapras.asleep == false && Lapras.current_health > 0) {
+      confuseRay();
+      healthCheck1();
+    }else {
+      // laprasDeath()
+    }
+  }, 1000);
 
   }
     if(Lapras.current_health > 0 && Venusaur.current_health > 0) {
@@ -187,6 +197,7 @@ selectConfuseRay.addEventListener("click", function() {
           console.log("venusaur confusion status: " + Venusaur.confused);
           setTimeout(() => {
             VenusaurAttack();
+            healthCheck2()
             
           }, 4100);
           setTimeout(function() {

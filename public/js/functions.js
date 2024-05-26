@@ -5,6 +5,19 @@ import { nextButton, venusaurSprite, laprasSprite, laprasHealthBar, combatHUD } 
 //text functions//
 export let fightDesc = document.querySelector('.fightDesc')
 
+export let pokemonSelection = document.querySelector(".selectScreen")
+
+export let battleTransition = document.querySelector(".combatMap")
+
+export let clickOnLapras = document.querySelector(".card")
+
+clickOnLapras.addEventListener("click", function() {
+   pokemonSelection.style.display = "none";
+   battleTransition.style.display = "block";
+   venusaurCry() ;
+   battleTheme();
+})
+
 export let displayFightDesc1 = (myDesc) => {
    
    let p = document.createElement("p");
@@ -76,12 +89,18 @@ export function menuSound () {
 } 
 
 export function battleTheme () {
-   let theme = new Audio("./public/assets/music/mainTheme.mp3");
+   let theme = new Audio("./public/assets/music/mainTheme2.mp3");
    theme.play();
+   window.battleThemeAudio = theme;
 } 
 export function battleThemestop () {
-   let theme = new Audio("./public/assets/music/mainTheme.mp3");
-   theme.stop();
+   let theme = new Audio("./public/assets/music/mainTheme2.mp3");
+   if (window.battleThemeAudio) { // Check if audio element is stored
+      window.battleThemeAudio.pause(); // Use pause() to stop playback
+      window.battleThemeAudio.currentTime = 0; // Reset playback position (optional)
+    } else {
+      console.warn("Audio element not found for stopping battle theme");
+    }
 } 
 export function hit () {
    let hit = new Audio("./public/assets/music/hit.mp3");
@@ -275,7 +294,10 @@ let battleStates = [];
 
 export let icebeam = () => {
    if (Lapras.current_health > 0) {
-      iceBeamFx();
+      setTimeout(() => {
+         
+         iceBeamFx();
+      }, 200);
    combatHUD.style.display = "none";
    
    setTimeout(function() {
@@ -318,8 +340,10 @@ export let confuseRay = () => {
     let confuseChance = Math.random();
     
     if (confuseChance > 0.35) {
-      
-      confuseRayFx();
+      setTimeout(() => {
+         
+         confuseRayFx();
+      }, 200);
       combatHUD.style.display = "none"
       displayFightDesc1("Lapras used confuse ray!")
       setTimeout(() => {
@@ -336,30 +360,6 @@ export let confuseRay = () => {
          
          let confusedMoveChance = Math.random();
          console.log(confusedMoveChance);
-         // if (confusedMoveChance < 0.33) {
-         //    setTimeout(() => {
-         //       displayFightDesc1("Venusaur hurt itself in it's confusion!")
-         //       console.log("Venusaur hurt itself in it's confusion!");
-               
-         //    }, 4000);
-         //    setTimeout(function() {
-
-         //       hit();
-         //       venuIsHit();
-         //     }, 4200);
-         //     setTimeout(function() {
-               
-         //       confusionDamage();
-         //     }, 4400);
-         //     setTimeout(() => {
-         //       combatHUD.style.display = "flex"
-               
-         //     }, 4800);
-               
-         // }
-            
-         
-
          
       }
       
@@ -378,7 +378,10 @@ export let confuseRay = () => {
  
 
 export let surf = () => {
-   surfFx();
+   setTimeout(() => {
+      
+      surfFx();
+   }, 200);
    combatHUD.style.display = "none"
    setTimeout(function () {
       surfAttack.style.opacity = "1";
@@ -421,13 +424,17 @@ export let surf = () => {
    Venusaur.current_health = Venusaur.current_health - dmgsurf;
    console.log("surf dealt " + dmgsurf + " hp to Venusaur")
    console.log("Venusaur health: " + Venusaur.current_health)
- }
+}
 
 
 export let rest = () => {
    Lapras.asleep = true;
    console.log("Lapras is asleep: " + Lapras.asleep);
-   restFx();
+   setTimeout(() => {
+      
+      restFx();
+   }, 200);
+
    sleep();
    combatHUD.style.display = "none"
    
@@ -439,12 +446,11 @@ export let rest = () => {
       displayFightDesc2("Lapras rested to recover his health.")
    }, 1500);
    let hpRecovery = Lapras.max_health;
-    console.log("Lapras used rest! Lapras fell asleep");
-    Lapras.current_health = Lapras.max_health;
-    console.log("Lapras recovered " + hpRecovery + " hp");
-    
-    
- }
+   console.log("Lapras used rest! Lapras fell asleep");
+   Lapras.current_health = Lapras.max_health;
+   console.log("Lapras recovered " + hpRecovery + " hp");
+
+}
 
  export let sleep = () => {
    let sleepEffect = document.createElement("div");
@@ -466,7 +472,7 @@ export let rest = () => {
  
    // Remove the sleep effect after 1 second
    setTimeout(() => {
-     sleepEffect.remove();
+   sleepEffect.remove();
    }, 1000);
  };
 
@@ -503,8 +509,12 @@ export let petalDance = () => {
   
 export let sleepPowder = () => {
    sleepPowderFx()
-   Lapras.asleep = true;
+   
    displayFightDesc2("Venusaur used sleep powder!")
+   setTimeout(() => {
+      
+      Lapras.asleep = true;
+     }, 3000);
      let sleepChance = Math.random();
    //   console.log(sleepChance);
      
@@ -518,6 +528,7 @@ export let sleepPowder = () => {
         console.log("Venusaur used sleep powder! but it failed...");
         return false;
      }
+     
   }
   
  
@@ -643,6 +654,7 @@ export let areYouConfused = () => {
             console.log("venusaur confusion status: " + Venusaur.confused);
             setTimeout(() => {
                displayFightDesc1("Venusaur is confused... It hurt itself in it's confusion!")
+
                
             }, 4000);
             setTimeout(function() {
@@ -651,9 +663,14 @@ export let areYouConfused = () => {
                venuIsHit();
             }, 4200);
             setTimeout(function() {
+               console.log(Venusaur.current_health);
+               Venusaur.current_health = Venusaur.current_health - 35;
+               console.log(Venusaur.current_health);
+
                
                confusionDamage();
             }, 4400);
+
          
          }else {
             setTimeout(() => {
@@ -683,7 +700,7 @@ export let healthCheck1 = () => {
       
             venusaurDeath();
             faintFx ()
-            // battleThemestop();
+            battleThemestop();
             victoryFx()
             fightDesc.innerHTML = "Venusaur fainted....Lapras wins!"
             combatHUD.style.display ="none"
@@ -716,15 +733,21 @@ export let healthCheck1 = () => {
   if (Lapras.current_health <= 0) {
        
    console.log("Lapras fainted....Venusaur wins! ");
-   fightDesc.innerHTML = "Lapras fainted... Venusaur wins!"
+   
    
    setTimeout(() => {
+      fightDesc.innerHTML = "Lapras fainted... Venusaur wins!"
+
+      
+   }, 3800);
+   setTimeout(() => {
    laprasDeath();
-   // battleThemestop();
+   
    faintFx ()
+   battleThemestop()
    combatHUD.style.display ="none"
 
-   }, 1000)
+   }, 4400)
     
   }
 
