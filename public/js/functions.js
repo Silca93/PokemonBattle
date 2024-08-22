@@ -613,6 +613,7 @@ export let areYouAsleep = () => {
          console.log("Lapras is asleep:" + Lapras.asleep);
          sleep();
          restFx();
+         combatHUD.style.display = "none";
       }, 500)
    }
 
@@ -652,11 +653,13 @@ export let areYouConfused = () => {
       console.log(confusedMoveChance);
          if (confusedMoveChance < 0.5) {
             console.log("venusaur confusion status: " + Venusaur.confused);
+           
             setTimeout(() => {
                displayFightDesc1("Venusaur is confused... It hurt itself in it's confusion!")
 
                
             }, 4000);
+            // confuseFx()
             setTimeout(function() {
    
                hit();
@@ -737,15 +740,21 @@ export let healthCheck1 = () => {
    
    setTimeout(() => {
       fightDesc.innerHTML = "Lapras fainted... Venusaur wins!"
+      
 
       
    }, 3800);
+
+   // setTimeout(() => {
+   //    combatHUD.style.display ="none"
+      
+   // }, 4100);
+
    setTimeout(() => {
    laprasDeath();
    
    faintFx ()
    battleThemestop()
-   combatHUD.style.display ="none"
 
    }, 4400)
     
