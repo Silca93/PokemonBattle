@@ -18,6 +18,25 @@ body {
   background-repeat: no-repeat;
 }
 
+
+/* @media (max-width: 1300px) {
+
+  .responsive {
+    height: 100vh;
+    width: 100vw;
+    z-index: 20;
+    display: block;
+    justify-content: center;
+    background-image: url(./../assets/image/bg2.gif);
+    background-position: center;
+    
+  }
+} */
+
+
+
+
+
 .combatMap {
   display: none;
   
@@ -27,12 +46,13 @@ body {
 .selectScreen {
   width: 100dvw;
   height: 100dvh;
-  background-color: red;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
+
+
 
 .top {
   width: 100%;
@@ -63,7 +83,7 @@ transform: rotate(-20deg);
 .bot {
   width: 100%;
   height: 65%;
-  background-color: blue;
+  background-color: #5abee8;
   background-image: url(../assets/image/bg1.gif);
   background-size: cover;
   background-repeat: no-repeat;
@@ -72,6 +92,48 @@ transform: rotate(-20deg);
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 1300px) {
+  .bot {
+    background-image: none;
+    background-color: transparent;
+   
+  }
+  .top {
+    background-color: transparent;
+  }
+
+  .cardcontainer {
+    display: none !important;
+  }
+
+  .leftbot {
+    display: none !important;
+  }
+  .banner {
+    background-image: url(./../assets/image/desktop.png);
+    background-position: center;
+    width: 100vw;
+  
+    height: 400px;
+    margin-top: 200px;
+
+    transform: rotate(0deg);
+  }
+}
+
+
+
+@media (max-width: 500px) {
+  .banner {
+    background-image: url(
+      ./../assets/image/desktopSmaller.png
+    );
+  }
+
+}
+
+
 
 .selectLeft {
   width: 50%;
@@ -113,6 +175,81 @@ transform: rotate(-20deg);
   font-weight: 600;
   color: white;
   transition: all .3s ease;
+}
+
+
+@media (max-width:1850px) {
+
+
+  .button {
+    margin-right: 100px;
+}
+  .arrow {
+    margin-right: 100px;
+}
+
+
+}
+
+@media (max-width:1800px) {
+
+
+  .button {
+    margin-right: 150px;
+}
+  .arrow {
+    margin-right: 150px;
+}
+
+
+}
+@media (max-width:1750px) {
+
+
+  .button {
+    margin-right: 200px;
+}
+  .arrow {
+    margin-right: 200px;
+}
+
+
+}
+@media (max-width:1700px) {
+
+
+  .button {
+    margin-right: 240px;
+}
+  .arrow {
+    margin-right: 240px;
+}
+
+
+}
+@media (max-width:1650px) {
+
+
+  .button {
+    margin-right: 700px;
+}
+  .arrow {
+    margin-right: 700px;
+}
+
+
+}
+@media (max-width:1500px) {
+
+
+  .button {
+    margin-right: 1000px;
+}
+  .arrow {
+    margin-right: 1000px;
+}
+
+
 }
 
 .arrow {
@@ -327,6 +464,54 @@ transform: rotate(-20deg);
   height: 300px;
   z-index: -1;
 }
+
+/* Lapras responsive */
+
+@media (max-width:1700px) {
+  #Lapras {
+    bottom: 10rem;
+    left: 24rem;
+  }
+
+  .laprasHealthBar {
+    bottom: 25rem !important;
+    left: 12rem !important;
+    
+  }
+}
+
+@media (max-width:1570px) {
+  #Lapras {
+    bottom: 12rem;
+    left: 20rem;
+  }
+  .laprasHealthBar {
+    bottom: 27rem !important;
+    left: 8rem !important;
+    
+  }
+
+
+}
+
+@media (max-width:1400px) {
+  #Lapras {
+    bottom: 15rem;
+    left: 18rem;
+  }
+  .laprasHealthBar {
+    bottom: 30rem !important;
+    left: 6rem !important;
+    
+  }
+
+}
+
+
+
+
+
+
 #Venusaur {
   position: absolute ;
   top: 25rem;
@@ -334,6 +519,48 @@ transform: rotate(-20deg);
   height: 150px;
 
 }
+
+/* Venusaur responsive*/
+@media (max-width:1750px) {
+  #Venusaur {
+    top: 22rem;
+    right: 32rem;
+  }
+}
+
+@media (max-width:1575px) {
+
+  #Venusaur {
+    top: 19rem;
+    right: 27rem;
+  }
+
+  .venusaurHealthBar {
+
+    top:11rem;
+    right:13rem;
+  }
+
+
+}
+
+@media (max-width:1370px) {
+
+  #Venusaur {
+    top: 16rem;
+    right: 24rem;
+  }
+  .venusaurHealthBar {
+
+    top:8rem;
+    right:10rem;
+  }
+
+}
+
+
+
+
  /*Lapras healthbar components*/
 
  .laprasHealthBar{
