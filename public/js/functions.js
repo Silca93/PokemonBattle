@@ -511,6 +511,11 @@ export let sleepPowder = () => {
    sleepPowderFx()
    
    displayFightDesc2("Venusaur used sleep powder!")
+   if (Lapras.asleep == true) {
+      
+
+  displayFightDesc1("Venusaur is already asleep...")
+   }
    setTimeout(() => {
       
       Lapras.asleep = true;
@@ -741,6 +746,7 @@ export let healthCheck1 = () => {
    setTimeout(() => {
       fightDesc.innerHTML = "Lapras fainted... Venusaur wins!"
       
+      combatHUD.style.display ="none"
 
       
    }, 3800);
